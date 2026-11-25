@@ -21,7 +21,8 @@ h1 small{display:block;font-size:18px;letter-spacing:.4em;color:var(--gold2,#f3c
 h2{font-size:38px;line-height:1.05;color:#ffe5a0;margin:0 0 12px}
 p{font-size:20px;line-height:1.45;margin:0}
 .gold{color:var(--gold,#ffd36d);font-weight:900}
-.crown{font-size:90px;margin-bottom:10px}
+.crown{font-size:90px;margin-bottom:10px;line-height:1}
+.crown img{width:110px;height:110px;object-fit:cover;border-radius:50%;border:3px solid var(--gold,#f5c85d)}
 .rule{height:2px;width:44%;margin:18px auto;background:var(--gold,#f5c85d)}
 .final{font-size:32px;font-weight:900;line-height:1.2;color:#ffe29a}
 footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justify-content:space-between;color:#f1d38b;font-size:10px;pointer-events:none}
@@ -29,6 +30,7 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 .controls button{border:1px solid #c59b42;background:#111;color:#ffe3a0;padding:10px 12px;border-radius:20px;font-weight:bold;font-size:11px;cursor:pointer}
 .btn-main{background:var(--gold,#f1c65d)!important;color:#000!important;padding:18px 24px;border-radius:30px;font-size:16px;font-weight:900;width:100%;margin-top:16px;display:block;border:none;cursor:pointer}
 .btn-ghost{background:#111!important;color:#ffe3a0;padding:14px 18px;border-radius:30px;font-size:13px;width:100%;margin-top:10px;display:block;border:1px solid #c59b42;cursor:pointer}
+.btn-roulette{background:#ff2d55!important;color:#fff!important;padding:14px 18px;border-radius:30px;font-size:15px;font-weight:900;width:100%;margin-top:10px;display:block;border:none;cursor:pointer;box-shadow:0 0 15px #ff2d5588}
 .pill{display:inline-block;background:#1a1200;border:1px solid var(--gold,#f5c85d);color:var(--gold,#ffd36d);padding:6px 12px;border-radius:20px;font-size:11px;font-weight:900;margin:3px}
 .join-page{position:absolute;inset:0;z-index:40;background:#0a0700;display:none;overflow-y:auto;padding:16% 8% 10%;text-align:center}
 .join-page.active{display:block}
@@ -50,20 +52,33 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 #btnAdm{position:absolute;z-index:50;top:2%;right:2%;background:#111;border:1px solid #555;color:#aaa;font-size:9px;padding:6px 8px;border-radius:12px;cursor:pointer;opacity:.7}
 #admModal{position:fixed;inset:0;z-index:99999;background:#000000ee;display:none;overflow-y:auto;padding:20px}
 #admModal.open{display:block}
-.adm-box{max-width:420px;margin:0 auto;background:#111;border:1px solid var(--gold,#f5c85d);border-radius:18px;padding:16px}
+.adm-box{max-width:440px;margin:0 auto;background:#111;border:1px solid var(--gold,#f5c85d);border-radius:18px;padding:16px}
 .adm-box h2{font-size:22px;text-align:center}
-.adm-box label{font-size:11px;letter-spacing:.1em;color:#ffd36d;display:block;margin-top:14px}
+.adm-box label{font-size:12px;font-weight:900;letter-spacing:.05em;color:#ffd36d;display:block;margin-top:16px}
+.adm-box small{font-size:11px;color:#aaa;font-weight:400;display:block;margin-top:3px}
 .adm-box input,.adm-box textarea,.adm-box select{width:100%;margin-top:6px;padding:11px;border-radius:10px;border:1px solid #333;background:#000;color:#fff;font-size:14px}
-.adm-box textarea{min-height:60px;resize:vertical}
+.adm-box textarea{min-height:70px;resize:vertical}
 .adm-row{display:flex;gap:8px}
 .adm-row>div{flex:1}
 .adm-preview{width:100%;height:120px;object-fit:cover;border-radius:12px;margin-top:8px;display:none;border:1px solid #333}
-.adm-tabs{display:flex;gap:6px;margin-top:10px}
-.adm-tabs button{flex:1;padding:9px;border-radius:12px;border:1px solid #444;background:#222;color:#fff;font-size:11px;font-weight:900;cursor:pointer}
+.adm-tabs{display:flex;gap:4px;margin-top:10px;flex-wrap:wrap}
+.adm-tabs button{flex:1;min-width:30%;padding:9px 4px;border-radius:10px;border:1px solid #444;background:#222;color:#fff;font-size:10px;font-weight:900;cursor:pointer}
 .adm-tabs button.on{background:var(--gold,#f1c65d);color:#000}
 .adm-music-btns{display:flex;gap:6px;margin-top:8px}
 .adm-music-btns button{flex:1;padding:12px 6px;border-radius:12px;border:1px solid var(--gold,#f5c85d);background:#1a1200;color:#ffd36d;font-size:11px;font-weight:900;cursor:pointer}
 .sync-box{background:#0a2a00;border:1px solid #4caf50;border-radius:12px;padding:14px;margin-top:12px;font-size:13px;text-align:center}
+.hud-opt{display:flex;gap:6px;margin-top:8px}
+.hud-opt button{flex:1;padding:12px;border-radius:12px;border:1px solid #444;background:#222;color:#fff;font-weight:900;cursor:pointer}
+.hud-opt button.on{background:var(--gold,#f1c65d);color:#000}
+.emoji-grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.emoji-grid button{background:#222;border:1px solid #444;border-radius:12px;font-size:24px;padding:8px 10px;cursor:pointer}
+.emoji-grid button.on{background:var(--gold,#f1c65d)}
+#rouletteModal{position:fixed;inset:0;z-index:999999;background:#000000ee;display:none;align-items:center;justify-content:center;padding:16px}
+#rouletteModal.open{display:flex}
+.roulette-box{background:#111;border:2px solid var(--gold,#f5c85d);border-radius:20px;padding:16px;width:100%;max-width:380px;text-align:center;position:relative}
+#wheel{width:260px;height:260px;border-radius:50%;border:4px solid #fff;margin:10px auto;transition:transform 4s cubic-bezier(.17,.67,.12,1);position:relative;overflow:hidden;background:#222}
+.wheel-label{position:absolute;left:50%;top:50%;transform-origin:0 0;font-size:11px;font-weight:900;color:#fff;text-shadow:1px 1px 2px #000;white-space:nowrap}
+.prize-img{width:110px;height:110px;object-fit:cover;border-radius:16px;border:2px solid var(--gold,#f5c85d);display:none;margin:10px auto}
 </style>
 </head>
 <body>
@@ -75,10 +90,10 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 <header id="headerTitle">CROWNS - SPORTS</header>
 <div class="controls"><button onclick="prevBtn()">◀</button><button onclick="nextBtn()">▶</button></div>
 <div class="text">
-<div class="slide active"><div class="crown">👑</div><div class="kicker">APRESENTA</div><h1 id="siteNameBig">CROWNS<small>SPORTS</small></h1><div class="rule"></div><p id="text1">Nem todo mundo nasce rei.<br><span class="gold">Alguns se tornam.</span></p></div>
+<div class="slide active"><div class="crown" id="hud1">👑</div><div class="kicker">APRESENTA</div><h1 id="siteNameBig">CROWNS<small>SPORTS</small></h1><div class="rule"></div><p id="text1">Nem todo mundo nasce rei.<br><span class="gold">Alguns se tornam.</span></p></div>
 <div class="slide"><div class="kicker"> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - COMPETITIVO</div><h2 id="title2">NAO E SO<br>JOGO</h2><p id="text2">E <span class="gold">guerra pela coroa.</span><br>Ranked, sala, campeonato.<br>Quem treina, reina.</p><div style="margin-top:12px"><span class="pill">4X4</span> <span class="pill">CAMPEONATO</span> <span class="pill">LINE</span></div></div>
 <div class="slide"><div class="kicker">DISCIPLINA - RACA - RESPEITO</div><h2 id="title3">ONDE TUDO<br>COMECA</h2><p id="text3">Suor no treino.<br>Foco na partida.<br>Ninguem ve o comeco,<br>todo mundo ve a <span class="gold">coroa.</span></p></div>
-<div class="slide"><div class="crown">👑</div><div class="kicker">RECRUTAMENTO ABERTO</div><div class="final" id="title4">QUER VESTIR<br>A COROA?</div><div class="rule"></div><p id="text4">Vagas para Line Competitiva<br> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - Suporte - Ruxador</p><button class="btn-main" onclick="openJoin()" id="btnJoinText">QUERO ENTRAR</button><button class="btn-ghost" onclick="replayTrailer()">VER DE NOVO</button></div>
+<div class="slide"><div class="crown" id="hud2">👑</div><div class="kicker">RECRUTAMENTO ABERTO</div><div class="final" id="title4">QUER VESTIR<br>A COROA?</div><div class="rule"></div><p id="text4">Vagas para Line Competitiva<br> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - Suporte - Ruxador</p><button class="btn-main" onclick="openJoin()" id="btnJoinText">QUERO ENTRAR</button><button class="btn-roulette" onclick="openRoulette()">🎡 GIRAR ROLETA DA SORTE</button><button class="btn-ghost" onclick="replayTrailer()">VER DE NOVO</button></div>
 </div>
 <div class="music-bar">
   <div class="music-top"><div class="music-title" id="musicTitle">Sem musica - escolha abaixo</div><div class="music-btns"><button onclick="toggleMusic()" id="btnPlayMusic">▶️</button><button onclick="toggleMute()" id="btnMute">🔊</button></div></div>
@@ -95,62 +110,102 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 </div>
 <input type="file" id="fileMusic" accept="audio/*" onchange="loadMyMusic(this)">
 <input type="file" id="fileBg" accept="image/*" style="display:none" onchange="loadBgFile(this)">
+<input type="file" id="fileHud" accept="image/*" style="display:none" onchange="loadHudFile(this)">
+
 <div id="admModal">
 <div class="adm-box">
 <h2>👑 ÁREA DE ADM</h2>
+<p style="font-size:12px;color:#aaa;text-align:center;margin:0">Aqui tu muda tudo do site.<br>Mexeu, apertou SALVAR, muda pra todo mundo.</p>
 <div id="admLogin">
-<label>SENHA</label>
-<input type="password" id="admPass" placeholder="Digite a senha" inputmode="numeric">
+<label>SENHA</label><small>Senha pra entrar no ADM. Padrão é 132.</small>
+<input type="password" id="admPass" placeholder="Digite a senha 132" inputmode="numeric">
 <button class="btn-main" onclick="checkAdm()">ENTRAR</button>
 <button class="btn-ghost" onclick="closeAdm()">FECHAR</button>
 </div>
 <div id="admPanel" style="display:none">
 <div class="adm-tabs">
-<button id="tabBtn1" class="on" onclick="showTab(1)">GERAL</button>
-<button id="tabBtn2" onclick="showTab(2)">TEXTOS</button>
-<button id="tabBtn3" onclick="showTab(3)">COR / FOTO / MUSICA</button>
-<button id="tabBtn4" onclick="showTab(4)">SYNC 🌐</button>
+<button id="tabBtn1" class="on" onclick="showTab(1)">1 - NOME E COR</button>
+<button id="tabBtn2" onclick="showTab(2)">2 - TEXTOS</button>
+<button id="tabBtn3" onclick="showTab(3)">3 - FOTO E MUSICA</button>
+<button id="tabBtn4" onclick="showTab(4)">4 - COROA / HUD</button>
+<button id="tabBtn5" onclick="showTab(5)">5 - ROLETA 🎡</button>
+<button id="tabBtn6" onclick="showTab(6)">6 - SYNC 🌐</button>
 </div>
+
 <div id="tab1">
-<label>NOME DO SITE</label><input id="a_siteName" value="CROWNS">
-<label>SUBTITULO (SPORTS)</label><input id="a_siteSub" value="SPORTS">
-<label>COR PRINCIPAL DO SITE</label><input type="color" id="a_color" value="#f1c65d">
-<div class="adm-row"><div><label>COR 2</label><input type="color" id="a_color2" value="#f2c65d"></div><div><label>COR DE FUNDO</label><input type="color" id="a_bg" value="#080808"></div></div>
-<label>LINK DO GRUPO WHATSAPP</label><input id="a_group" value="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2">
-<label>TEXTO DO BOTAO ENTRAR</label><input id="a_btnJoin" value="QUERO ENTRAR">
+<label>1. NOME DO SITE</label><small>O nome grande que aparece no topo. Ex: CROWNS</small><input id="a_siteName" value="CROWNS">
+<label>2. PALAVRA PEQUENA EMBAIXO</label><small>Ex: SPORTS, FF, CLAN</small><input id="a_siteSub" value="SPORTS">
+<label>3. COR PRINCIPAL</label><small>A cor dos botões e do dourado. Clica e escolhe.</small><input type="color" id="a_color" value="#f1c65d">
+<div class="adm-row"><div><label>COR 2</label><input type="color" id="a_color2" value="#f2c65d"></div><div><label>COR DO FUNDO</label><input type="color" id="a_bg" value="#080808"></div></div>
+<label>4. LINK DO GRUPO DO WHATSAPP</label><small>Quando a pessoa clica em QUERO ENTRAR, vai pra esse grupo.</small><input id="a_group" value="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2">
+<label>5. TEXTO DO BOTÃO ENTRAR</label><small>Ex: QUERO ENTRAR, BORA REINAR</small><input id="a_btnJoin" value="QUERO ENTRAR">
 </div>
+
 <div id="tab2" style="display:none">
-<label>TELA 1 - TEXTO</label><textarea id="a_text1">Nem todo mundo nasce rei. Alguns se tornam.</textarea>
-<label>TELA 2 - TITULO</label><input id="a_title2" value="NAO E SO JOGO">
+<label>TELA 1 - FRASE PRINCIPAL</label><small>A primeira frase que aparece.</small><textarea id="a_text1">Nem todo mundo nasce rei. Alguns se tornam.</textarea>
+<label>TELA 2 - TÍTULO</label><textarea id="a_title2">NAO E SO JOGO</textarea>
 <label>TELA 2 - TEXTO</label><textarea id="a_text2">E guerra pela coroa. Ranked, sala, campeonato. Quem treina, reina.</textarea>
-<label>TELA 3 - TITULO</label><input id="a_title3" value="ONDE TUDO COMECA">
+<label>TELA 3 - TÍTULO</label><input id="a_title3" value="ONDE TUDO COMECA">
 <label>TELA 3 - TEXTO</label><textarea id="a_text3">Suor no treino. Foco na partida. Ninguem ve o comeco, todo mundo ve a coroa.</textarea>
-<label>TELA 4 - TITULO</label><input id="a_title4" value="QUER VESTIR A COROA?">
-<label>TELA 4 - TEXTO</label><textarea id="a_text4">Vagas para Line Competitiva FREE FIRE - Suporte - Ruxador</textarea>
+<label>TELA 4 - TÍTULO FINAL</label><input id="a_title4" value="QUER VESTIR A COROA?">
+<label>TELA 4 - TEXTO FINAL</label><textarea id="a_text4">Vagas para Line Competitiva FREE FIRE - Suporte - Ruxador</textarea>
 </div>
+
 <div id="tab3" style="display:none">
-<label>🎵 MUSICA DO SITE - ESCOLHER DE ONDE</label>
+<label>🎵 MUSICA DO SITE - DE ONDE PEGAR?</label><small>Aperta um botão e escolhe a música.</small>
 <div class="adm-music-btns">
 <button onclick="document.getElementById('fileMusic').click()">📂<br>GALERIA</button>
 <button onclick="window.open('https://www.youtube.com/','_blank')">▶️<br>YOUTUBE</button>
 <button onclick="window.open('https://play.google.com/store/apps/details?id=com.skipads.oitube.official&hl=pt_BR','_blank')">📱<br>OI TUBE</button>
 </div>
-<label>MUSICA (LINK MP3 - SE TIVER)</label><input id="a_musicUrl" placeholder="Cole link mp3 se tiver">
+<label>MUSICA POR LINK MP3 (OPCIONAL)</label><small>Se tu tiver um link de mp3, cola aqui. Se não tiver, deixa vazio.</small><input id="a_musicUrl" placeholder="Cole link mp3 se tiver">
 <button class="btn-ghost" onclick="testMusicUrl()">▶️ TESTAR MUSICA DO LINK</button>
-<label>FOTO DE FUNDO (LINK)</label><input id="a_bgImg" placeholder="Cole o link da foto ou use o botao abaixo">
+<label>FOTO DE FUNDO DO SITE</label><small>Foto que fica atrás de tudo. Cola o link da foto.</small><input id="a_bgImg" placeholder="Cole o link da foto">
 <button class="btn-ghost" onclick="document.getElementById('fileBg').click()">📷 ESCOLHER FOTO DO CELULAR</button>
 <img id="admPreview" class="adm-preview">
-<label>NOVA SENHA DO ADM</label><input id="a_newPass" placeholder="Deixe vazio para manter 132" inputmode="numeric">
+<label>NOVA SENHA DO ADM</label><small>Se quiser trocar a senha 132, escreve a nova aqui. Se não quiser, deixa vazio.</small><input id="a_newPass" placeholder="Deixe vazio para manter 132" inputmode="numeric">
 </div>
+
 <div id="tab4" style="display:none">
-<div class="sync-box">
-<b>🌐 SEU SYNC JÁ ESTÁ PRONTO</b><br><br>
-Código: <b>1669f9d482974ec189d2</b><br><br>
-<span id="syncStatus2" style="font-weight:900;color:#ffd36d">Status: ✅ ATIVADO</span><br><br>
-É só mexer e apertar SALVAR TUDO que muda pra todo mundo.
+<label>👑 O QUE VAI APARECER NO LUGAR DA COROA?</label><small>Escolhe se vai ser um EMOJI ou uma FOTO tua.</small>
+<div class="hud-opt">
+<button id="hudBtnEmoji" class="on" onclick="setHudType('emoji')">😀 USAR EMOJI</button>
+<button id="hudBtnFoto" onclick="setHudType('foto')">📷 USAR FOTO</button>
 </div>
+<div id="hudEmojiBox">
+<label>ESCOLHE O EMOJI</label><small>Aperta em um emoji pra ele virar a coroa do site.</small>
+<div class="emoji-grid" id="emojiGrid"></div>
+<label>OU ESCREVE QUALQUER EMOJI AQUI</label><input id="a_hudEmoji" value="👑" placeholder="Ex: 👑 🔥 💎 🎮">
+<label>TAMANHO DO EMOJI</label><small>Quanto maior o número, maior o emoji.</small><input type="range" id="a_hudSize" min="50" max="150" value="90" oninput="document.getElementById('hudSizeLabel').textContent=this.value+'px'"><span id="hudSizeLabel" style="color:#ffd36d;font-weight:900">90px</span>
+</div>
+<div id="hudFotoBox" style="display:none">
+<label>FOTO DA COROA / HUD</label><small>Cola o link da foto que vai aparecer no lugar do emoji.</small><input id="a_hudImg" placeholder="Cole o link da foto">
+<button class="btn-ghost" onclick="document.getElementById('fileHud').click()">📷 ESCOLHER FOTO DA GALERIA</button>
+<img id="hudPreview" class="adm-preview">
+<p style="font-size:11px;color:#aaa">Dica: foto quadrada fica mais bonita. Foto da galeria só aparece pra ti, pra aparecer pra todos usa LINK.</p>
+</div>
+</div>
+
+<div id="tab5" style="display:none">
+<label>🎡 ROLETA DA SORTE - PRÊMIOS</label><small>Como colocar prêmio: 1 por linha.<br>Escreve assim: <b>NOME DO PRÊMIO | LINK DA FOTO</b><br>Ex: <b>100 Diamantes | https://link-da-foto.jpg</b><br>Se não tiver foto, escreve só o nome.</small>
+<textarea id="a_prizes" style="min-height:140px">100 Diamantes |
+Roupa Angelical |
+50 Diamantes |
+Skin de Arma Lendária |
+Tente de novo 😢 |
+Emote Raro |
+10 Diamantes |</textarea>
+<label>TÍTULO DA ROLETA</label><small>Ex: ROLETA DA SORTE, ROLETA DO REI</small><input id="a_rouletteTitle" value="🎡 ROLETA DA SORTE">
+<label>TEXTO DO BOTÃO GIRAR</label><input id="a_rouletteBtn" value="🎡 GIRAR ROLETA DA SORTE">
+<p style="font-size:11px;color:#4caf50">✅ Dica pra roupa do FF: procura a roupa no Google, segura na foto, copia o link da imagem e cola depois do |</p>
+<button class="btn-ghost" onclick="openRoulette()">👀 VER COMO FICOU A ROLETA</button>
+</div>
+
+<div id="tab6" style="display:none">
+<div class="sync-box"><b>🌐 SEU SYNC JÁ ESTÁ PRONTO</b><br><br>Código: <b>1669f9d482974ec189d2</b><br><br><span style="font-weight:900;color:#ffd36d">Status: ✅ ATIVADO</span><br><br>É só mexer e apertar SALVAR TUDO que muda pra todo mundo.</div>
 <button class="btn-ghost" onclick="copyShareLink()">🔗 COPIAR LINK PRA TODOS</button>
 </div>
+
 <button class="btn-main" onclick="saveAdm()">💾 SALVAR TUDO</button>
 <button class="btn-ghost" onclick="copyShareLink()">🔗 COPIAR LINK PRA TODOS</button>
 <button class="btn-ghost" onclick="resetAdm()">↩️ VOLTAR AO PADRAO</button>
@@ -158,6 +213,7 @@ Código: <b>1669f9d482974ec189d2</b><br><br>
 </div>
 </div>
 </div>
+
 <div id="musicAppsModal" style="position:fixed;inset:0;z-index:999999;background:#000000ee;display:none;align-items:center;justify-content:center;padding:20px">
 <div style="background:#111;border:1px solid #f5c85d;border-radius:18px;padding:18px;width:100%;max-width:360px;text-align:center">
 <h2 style="margin:0 0 6px">🎵 MUSICA DO SITE</h2>
@@ -169,15 +225,34 @@ Código: <b>1669f9d482974ec189d2</b><br><br>
 <button class="btn-ghost" onclick="closeMusicApps()">FECHAR</button>
 </div>
 </div>
+
+<div id="rouletteModal">
+<div class="roulette-box">
+<h2 id="rouletteTitle" style="margin:0">🎡 ROLETA DA SORTE</h2>
+<p style="font-size:12px;color:#aaa;margin:6px 0">Gire e veja o que você ganhou!</p>
+<div style="font-size:28px">▼</div>
+<div id="wheel"></div>
+<img id="roulettePrizeImg" class="prize-img">
+<div id="rouletteResult" style="font-size:18px;font-weight:900;color:#ffd36d;min-height:26px;margin:8px 0"></div>
+<button class="btn-roulette" id="btnSpin" onclick="spinRoulette()">🎡 GIRAR AGORA</button>
+<button class="btn-ghost" onclick="closeRoulette()">FECHAR</button>
+</div>
+</div>
+
 <script>
-let current=0, started=true, selectedPos="", musicPlaying=false, isMuted=false;
+let current=0, selectedPos="", musicPlaying=false, isMuted=false;
 let GROUP_LINK="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2";
 let CFG = JSON.parse(localStorage.getItem('crowns_cfg')||'{}');
-let DEFAULTS={siteName:"CROWNS",siteSub:"SPORTS",color:"#f1c65d",color2:"#f2c65d",bg:"#080808",group:GROUP_LINK,btnJoin:"QUERO ENTRAR",text1:"Nem todo mundo nasce rei. Alguns se tornam.",title2:"NAO E SO JOGO",text2:"E guerra pela coroa. Ranked, sala, campeonato. Quem treina, reina.",title3:"ONDE TUDO COMECA",text3:"Suor no treino. Foco na partida. Ninguem ve o comeco, todo mundo ve a coroa.",title4:"QUER VESTIR A COROA?",text4:"Vagas para Line Competitiva FREE FIRE - Suporte - Ruxador",bgImg:"",musicUrl:"",pass:"132",syncId:"1669f9d482974ec189d2",syncOn:1,updated:0};
+let DEFAULTS={siteName:"CROWNS",siteSub:"SPORTS",color:"#f1c65d",color2:"#f2c65d",bg:"#080808",group:GROUP_LINK,btnJoin:"QUERO ENTRAR",text1:"Nem todo mundo nasce rei. Alguns se tornam.",title2:"NAO E SO JOGO",text2:"E guerra pela coroa. Ranked, sala, campeonato. Quem treina, reina.",title3:"ONDE TUDO COMECA",text3:"Suor no treino. Foco na partida. Ninguem ve o comeco, todo mundo ve a coroa.",title4:"QUER VESTIR A COROA?",text4:"Vagas para Line Competitiva FREE FIRE - Suporte - Ruxador",bgImg:"",musicUrl:"",pass:"132",syncId:"1669f9d482974ec189d2",syncOn:1,updated:0,hudType:"emoji",hudEmoji:"👑",hudImg:"",hudSize:90,rouletteTitle:"🎡 ROLETA DA SORTE",rouletteBtn:"🎡 GIRAR ROLETA DA SORTE",prizes:"100 Diamantes |\nRoupa Angelical |\n50 Diamantes |\nSkin de Arma Lendária |\nTente de novo 😢 |\nEmote Raro |\n10 Diamantes |"};
 CFG={...DEFAULTS,...CFG, syncId:"1669f9d482974ec189d2", syncOn:1};
 try{ const params=new URLSearchParams(location.search); if(params.get('cfg')){ const fromLink=JSON.parse(decodeURIComponent(atob(params.get('cfg')))); CFG={...CFG,...fromLink, syncId:"1669f9d482974ec189d2", syncOn:1}; localStorage.setItem('crowns_cfg',JSON.stringify(CFG)); } }catch(e){}
 const slides=document.querySelectorAll('.slide'); const audio=document.getElementById('bgMusic'); audio.volume=0.70; let timer=null;
-function applyCfg(){ document.documentElement.style.setProperty('--gold',CFG.color); document.documentElement.style.setProperty('--gold2',CFG.color2); document.getElementById('player').style.background=CFG.bg; document.getElementById('headerTitle').textContent=CFG.siteName+" - "+CFG.siteSub; document.getElementById('siteNameBig').innerHTML=CFG.siteName+"<small>"+CFG.siteSub+"</small>"; document.getElementById('footerName').textContent=CFG.siteName+"-"+CFG.siteSub; document.getElementById('text1').innerHTML=CFG.text1; document.getElementById('title2').innerHTML=CFG.title2.replace(/\n/g,'<br>'); document.getElementById('text2').innerHTML=CFG.text2; document.getElementById('title3').innerHTML=CFG.title3.replace(/\n/g,'<br>'); document.getElementById('text3').innerHTML=CFG.text3; document.getElementById('title4').innerHTML=CFG.title4.replace(/\n/g,'<br>'); document.getElementById('text4').innerHTML=CFG.text4; document.getElementById('btnJoinText').textContent=CFG.btnJoin; GROUP_LINK=CFG.group; document.getElementById('groupLinkA').href=CFG.group; if(CFG.bgImg && !CFG.bgImg.startsWith('data:')){ document.getElementById('playerBg').style.backgroundImage="url('"+CFG.bgImg+"')"; } if(CFG.musicUrl && !audio.src){ audio.src=CFG.musicUrl; } updateMusicUI(); }
+let hudTypeTemp="emoji";
+const EMOJIS=["👑","🔥","💎","🎮","⚡","🏆","🦁","👽","💀","🌟","🎯","🤑","😈","🐉","⚔️"];
+function renderEmojiGrid(){ const g=document.getElementById('emojiGrid'); g.innerHTML=""; EMOJIS.forEach(e=>{ const b=document.createElement('button'); b.type='button'; b.textContent=e; if(e===CFG.hudEmoji) b.classList.add('on'); b.onclick=()=>{ document.getElementById('a_hudEmoji').value=e; document.querySelectorAll('#emojiGrid button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); }; g.appendChild(b); }); }
+function applyHud(){ const h1=document.getElementById('hud1'), h2=document.getElementById('hud2'); [h1,h2].forEach(h=>{ if(CFG.hudType==='foto' && CFG.hudImg){ h.innerHTML='<img src="'+CFG.hudImg+'" style="width:'+CFG.hudSize+'px;height:'+CFG.hudSize+'px">'; } else { h.textContent=CFG.hudEmoji||"👑"; h.style.fontSize=CFG.hudSize+'px'; } }); }
+function setHudType(t){ hudTypeTemp=t; document.getElementById('hudBtnEmoji').classList.toggle('on',t==='emoji'); document.getElementById('hudBtnFoto').classList.toggle('on',t==='foto'); document.getElementById('hudEmojiBox').style.display=t==='emoji'?'block':'none'; document.getElementById('hudFotoBox').style.display=t==='foto'?'block':'none'; }
+function applyCfg(){ document.documentElement.style.setProperty('--gold',CFG.color); document.documentElement.style.setProperty('--gold2',CFG.color2); document.getElementById('player').style.background=CFG.bg; document.getElementById('headerTitle').textContent=CFG.siteName+" - "+CFG.siteSub; document.getElementById('siteNameBig').innerHTML=CFG.siteName+"<small>"+CFG.siteSub+"</small>"; document.getElementById('footerName').textContent=CFG.siteName+"-"+CFG.siteSub; document.getElementById('text1').innerHTML=CFG.text1; document.getElementById('title2').innerHTML=CFG.title2.replace(/\n/g,'<br>'); document.getElementById('text2').innerHTML=CFG.text2; document.getElementById('title3').innerHTML=CFG.title3.replace(/\n/g,'<br>'); document.getElementById('text3').innerHTML=CFG.text3; document.getElementById('title4').innerHTML=CFG.title4.replace(/\n/g,'<br>'); document.getElementById('text4').innerHTML=CFG.text4; document.getElementById('btnJoinText').textContent=CFG.btnJoin; GROUP_LINK=CFG.group; document.getElementById('groupLinkA').href=CFG.group; if(CFG.bgImg && !CFG.bgImg.startsWith('data:')){ document.getElementById('playerBg').style.backgroundImage="url('"+CFG.bgImg+"')"; } if(CFG.musicUrl && !audio.src){ audio.src=CFG.musicUrl; } document.getElementById('rouletteTitle').textContent=CFG.rouletteTitle||"🎡 ROLETA DA SORTE"; document.getElementById('btnSpin').textContent=CFG.rouletteBtn||"🎡 GIRAR AGORA"; applyHud(); updateMusicUI(); }
 function updateMusicUI(){ document.getElementById('btnPlayMusic').textContent=musicPlaying?'⏸️':'▶️'; document.getElementById('btnMute').textContent=isMuted?'🔇':'🔊'; }
 function toggleMusic(){ if(!audio.src){ document.getElementById('fileMusic').click(); return; } if(!musicPlaying){ audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); } else{ audio.pause(); musicPlaying=false; updateMusicUI(); } }
 function tryPlayGitHub(){ if(CFG.musicUrl){ audio.src=CFG.musicUrl; audio.play().then(()=>{musicPlaying=true;document.getElementById('musicTitle').textContent='🎵 Musica do site';updateMusicUI();}); return; } audio.src='musica.mp3'; audio.play().then(()=>{ musicPlaying=true; document.getElementById('musicTitle').textContent='🎵 Musica do site'; updateMusicUI(); }).catch(()=>{ openMusicApps(); }); }
@@ -190,6 +265,7 @@ function volumeDown(){ let s=document.getElementById('volSlider'); s.value=Math.
 function toggleMute(){ isMuted=!isMuted; audio.muted=isMuted; updateMusicUI(); }
 function loadMyMusic(input){ const file=input.files[0]; if(!file) return; audio.src=URL.createObjectURL(file); document.getElementById('musicTitle').textContent='🎵 '+file.name; audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); closeMusicApps(); }
 function loadBgFile(input){ const f=input.files[0]; if(!f) return; const r=new FileReader(); r.onload=e=>{ CFG.bgImg=e.target.result; document.getElementById('playerBg').style.backgroundImage="url('"+CFG.bgImg+"')"; document.getElementById('admPreview').src=CFG.bgImg; document.getElementById('admPreview').style.display='block'; alert('Foto escolhida! Mas foto do celular NÃO vai pra outra pessoa, só link de foto vai. Usa link pra valer pra todos.'); }; r.readAsDataURL(f); }
+function loadHudFile(input){ const f=input.files[0]; if(!f) return; const r=new FileReader(); r.onload=e=>{ document.getElementById('a_hudImg').value=e.target.result; document.getElementById('hudPreview').src=e.target.result; document.getElementById('hudPreview').style.display='block'; setHudType('foto'); alert('Foto da coroa escolhida! Pra valer pra todos, usa LINK da foto. Foto da galeria só aparece pra ti.'); }; r.readAsDataURL(f); }
 function show(n){ current=(n+slides.length)%slides.length; slides.forEach((s,i)=>s.classList.toggle('active',i===current)); }
 function autoPlay(){ clearInterval(timer); timer=setInterval(()=>{ if(!document.getElementById('joinPage').classList.contains('active')){ if(current<slides.length-1) show(current+1); else clearInterval(timer); } }, 5000); }
 function prevBtn(){ show(current-1); } function nextBtn(){ show(current+1); }
@@ -200,13 +276,20 @@ function copyLink(){ navigator.clipboard.writeText(GROUP_LINK).then(()=>alert('L
 function openAdm(){ document.getElementById('admModal').classList.add('open'); document.getElementById('admLogin').style.display='block'; document.getElementById('admPanel').style.display='none'; }
 function closeAdm(){ document.getElementById('admModal').classList.remove('open'); }
 function checkAdm(){ const p=document.getElementById('admPass').value; if(p===String(CFG.pass)){ document.getElementById('admLogin').style.display='none'; document.getElementById('admPanel').style.display='block'; fillAdm(); } else { alert('Senha errada!'); } }
-function showTab(n){ [1,2,3,4].forEach(i=>{ const el=document.getElementById('tab'+i); if(el) el.style.display=i===n?'block':'none'; document.getElementById('tabBtn'+i).classList.toggle('on',i===n); }); }
-function fillAdm(){ document.getElementById('a_siteName').value=CFG.siteName; document.getElementById('a_siteSub').value=CFG.siteSub; document.getElementById('a_color').value=CFG.color; document.getElementById('a_color2').value=CFG.color2; document.getElementById('a_bg').value=CFG.bg; document.getElementById('a_group').value=CFG.group; document.getElementById('a_btnJoin').value=CFG.btnJoin; document.getElementById('a_text1').value=CFG.text1; document.getElementById('a_title2').value=CFG.title2; document.getElementById('a_text2').value=CFG.text2; document.getElementById('a_title3').value=CFG.title3; document.getElementById('a_text3').value=CFG.text3; document.getElementById('a_title4').value=CFG.title4; document.getElementById('a_text4').value=CFG.text4; document.getElementById('a_bgImg').value=CFG.bgImg && !CFG.bgImg.startsWith('data:')?CFG.bgImg:''; document.getElementById('a_musicUrl').value=CFG.musicUrl; if(CFG.bgImg && !CFG.bgImg.startsWith('data:')){ document.getElementById('admPreview').src=CFG.bgImg; document.getElementById('admPreview').style.display='block'; } }
+function showTab(n){ [1,2,3,4,5,6].forEach(i=>{ const el=document.getElementById('tab'+i); if(el) el.style.display=i===n?'block':'none'; document.getElementById('tabBtn'+i).classList.toggle('on',i===n); }); }
+function fillAdm(){ document.getElementById('a_siteName').value=CFG.siteName; document.getElementById('a_siteSub').value=CFG.siteSub; document.getElementById('a_color').value=CFG.color; document.getElementById('a_color2').value=CFG.color2; document.getElementById('a_bg').value=CFG.bg; document.getElementById('a_group').value=CFG.group; document.getElementById('a_btnJoin').value=CFG.btnJoin; document.getElementById('a_text1').value=CFG.text1; document.getElementById('a_title2').value=CFG.title2; document.getElementById('a_text2').value=CFG.text2; document.getElementById('a_title3').value=CFG.title3; document.getElementById('a_text3').value=CFG.text3; document.getElementById('a_title4').value=CFG.title4; document.getElementById('a_text4').value=CFG.text4; document.getElementById('a_bgImg').value=CFG.bgImg && !CFG.bgImg.startsWith('data:')?CFG.bgImg:''; document.getElementById('a_musicUrl').value=CFG.musicUrl; document.getElementById('a_hudEmoji').value=CFG.hudEmoji||"👑"; document.getElementById('a_hudSize').value=CFG.hudSize||90; document.getElementById('hudSizeLabel').textContent=(CFG.hudSize||90)+'px'; document.getElementById('a_hudImg').value=CFG.hudImg && !CFG.hudImg.startsWith('data:')?CFG.hudImg:''; document.getElementById('a_prizes').value=CFG.prizes||""; document.getElementById('a_rouletteTitle').value=CFG.rouletteTitle||""; document.getElementById('a_rouletteBtn').value=CFG.rouletteBtn||""; hudTypeTemp=CFG.hudType||"emoji"; setHudType(hudTypeTemp); renderEmojiGrid(); if(CFG.bgImg && !CFG.bgImg.startsWith('data:')){ document.getElementById('admPreview').src=CFG.bgImg; document.getElementById('admPreview').style.display='block'; } if(CFG.hudImg && !CFG.hudImg.startsWith('data:')){ document.getElementById('hudPreview').src=CFG.hudImg; document.getElementById('hudPreview').style.display='block'; } }
 async function saveToCloud(){ try{ await fetch('https://api.npoint.io/'+CFG.syncId,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(CFG)}); }catch(e){} }
 async function loadFromCloud(){ try{ const r=await fetch('https://api.npoint.io/'+CFG.syncId); if(!r.ok) return; const cloud=await r.json(); if(cloud && cloud.updated && cloud.updated>(CFG.updated||0)){ CFG={...CFG,...cloud, syncId:"1669f9d482974ec189d2", syncOn:1}; localStorage.setItem('crowns_cfg',JSON.stringify(CFG)); applyCfg(); } }catch(e){} }
-function copyShareLink(){ const toShare={...CFG}; delete toShare.pass; if(toShare.bgImg && toShare.bgImg.startsWith('data:')) toShare.bgImg=''; const code=btoa(encodeURIComponent(JSON.stringify(toShare))); const base=location.href.split('?')[0]; const link=base+'?cfg='+code; navigator.clipboard.writeText(link).then(()=>alert('Link copiado! ✅\nManda esse link no grupo. Quem abrir por ele vai ver tudo novo.')).catch(()=>{ prompt('Copia esse link e manda no grupo:',link); }); }
-async function saveAdm(){ CFG.siteName=document.getElementById('a_siteName').value||"CROWNS"; CFG.siteSub=document.getElementById('a_siteSub').value||"SPORTS"; CFG.color=document.getElementById('a_color').value; CFG.color2=document.getElementById('a_color2').value; CFG.bg=document.getElementById('a_bg').value; CFG.group=document.getElementById('a_group').value; CFG.btnJoin=document.getElementById('a_btnJoin').value; CFG.text1=document.getElementById('a_text1').value; CFG.title2=document.getElementById('a_title2').value; CFG.text2=document.getElementById('a_text2').value; CFG.title3=document.getElementById('a_title3').value; CFG.text3=document.getElementById('a_text3').value; CFG.title4=document.getElementById('a_title4').value; CFG.text4=document.getElementById('a_text4').value; const linkBg=document.getElementById('a_bgImg').value.trim(); if(linkBg) CFG.bgImg=linkBg; CFG.musicUrl=document.getElementById('a_musicUrl').value.trim(); CFG.updated=Date.now(); CFG.syncId="1669f9d482974ec189d2"; CFG.syncOn=1; const np=document.getElementById('a_newPass').value.trim(); if(np) CFG.pass=np; localStorage.setItem('crowns_cfg',JSON.stringify(CFG)); applyCfg(); await saveToCloud(); alert('Salvo na nuvem! ✅\nVai mudar pra todo mundo sozinho em até 30 segundos.'); closeAdm(); }
+function copyShareLink(){ const toShare={...CFG}; delete toShare.pass; if(toShare.bgImg && toShare.bgImg.startsWith('data:')) toShare.bgImg=''; if(toShare.hudImg && toShare.hudImg.startsWith('data:')) toShare.hudImg=''; const code=btoa(encodeURIComponent(JSON.stringify(toShare))); const base=location.href.split('?')[0]; const link=base+'?cfg='+code; navigator.clipboard.writeText(link).then(()=>alert('Link copiado! ✅\nManda esse link no grupo. Quem abrir por ele vai ver tudo novo.')).catch(()=>{ prompt('Copia esse link e manda no grupo:',link); }); }
+async function saveAdm(){ CFG.siteName=document.getElementById('a_siteName').value||"CROWNS"; CFG.siteSub=document.getElementById('a_siteSub').value||"SPORTS"; CFG.color=document.getElementById('a_color').value; CFG.color2=document.getElementById('a_color2').value; CFG.bg=document.getElementById('a_bg').value; CFG.group=document.getElementById('a_group').value; CFG.btnJoin=document.getElementById('a_btnJoin').value; CFG.text1=document.getElementById('a_text1').value; CFG.title2=document.getElementById('a_title2').value; CFG.text2=document.getElementById('a_text2').value; CFG.title3=document.getElementById('a_title3').value; CFG.text3=document.getElementById('a_text3').value; CFG.title4=document.getElementById('a_title4').value; CFG.text4=document.getElementById('a_text4').value; const linkBg=document.getElementById('a_bgImg').value.trim(); if(linkBg) CFG.bgImg=linkBg; CFG.musicUrl=document.getElementById('a_musicUrl').value.trim(); CFG.hudType=hudTypeTemp; CFG.hudEmoji=document.getElementById('a_hudEmoji').value||"👑"; CFG.hudSize=parseInt(document.getElementById('a_hudSize').value)||90; const hudLink=document.getElementById('a_hudImg').value.trim(); if(hudLink) CFG.hudImg=hudLink; CFG.prizes=document.getElementById('a_prizes').value; CFG.rouletteTitle=document.getElementById('a_rouletteTitle').value; CFG.rouletteBtn=document.getElementById('a_rouletteBtn').value; CFG.updated=Date.now(); CFG.syncId="1669f9d482974ec189d2"; CFG.syncOn=1; const np=document.getElementById('a_newPass').value.trim(); if(np) CFG.pass=np; localStorage.setItem('crowns_cfg',JSON.stringify(CFG)); applyCfg(); await saveToCloud(); alert('Salvo! ✅\nHUD + Roleta + tudo mais já mudou pra todo mundo em até 30 seg.'); closeAdm(); }
 function resetAdm(){ if(confirm('Voltar tudo ao padrao?')){ localStorage.removeItem('crowns_cfg'); location.reload(); } }
+// ROLETA
+let spinning=false, currentDeg=0;
+function parsePrizes(){ return (CFG.prizes||"").split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{ const parts=l.split('|'); return {name:parts[0].trim(), img:(parts[1]||"").trim()}; }); }
+function drawWheel(){ const prizes=parsePrizes(); const wheel=document.getElementById('wheel'); wheel.innerHTML=""; if(!prizes.length) return; const colors=["#ff2d55","#f1c65d","#2d9cff","#4caf50","#9c27b0","#ff9800","#00bcd4","#e91e63"]; const deg=360/prizes.length; prizes.forEach((p,i)=>{ const seg=document.createElement('div'); seg.style.cssText=`position:absolute;left:50%;top:50%;width:130px;height:130px;transform-origin:0 0;transform:rotate(${i*deg}deg) skewY(${90-deg}deg);background:${colors[i%colors.length]};border:1px solid #fff;`; wheel.appendChild(seg); const lab=document.createElement('div'); lab.className='wheel-label'; lab.textContent=p.name.substring(0,14); lab.style.transform=`rotate(${i*deg+deg/2}deg) translate(68px,-7px)`; wheel.appendChild(lab); }); }
+function openRoulette(){ drawWheel(); document.getElementById('rouletteResult').textContent=""; document.getElementById('roulettePrizeImg').style.display='none'; document.getElementById('rouletteModal').classList.add('open'); }
+function closeRoulette(){ document.getElementById('rouletteModal').classList.remove('open'); }
+function spinRoulette(){ if(spinning) return; const prizes=parsePrizes(); if(!prizes.length){ alert('Sem prêmios! Vai no ADM > ROLETA e coloca os prêmios.'); return; } spinning=true; document.getElementById('btnSpin').textContent="GIRANDO..."; document.getElementById('rouletteResult').textContent=""; document.getElementById('roulettePrizeImg').style.display='none'; const win=Math.floor(Math.random()*prizes.length); const degPer=360/prizes.length; const target=360*5 + (360 - (win*degPer + degPer/2)); currentDeg+=target; document.getElementById('wheel').style.transform=`rotate(${currentDeg}deg)`; setTimeout(()=>{ const p=prizes[win]; document.getElementById('rouletteResult').textContent="🎉 VOCÊ GANHOU: "+p.name; if(p.img){ const im=document.getElementById('roulettePrizeImg'); im.src=p.img; im.style.display='block'; } document.getElementById('btnSpin').textContent=CFG.rouletteBtn||"🎡 GIRAR AGORA"; spinning=false; }, 4200); }
 applyCfg(); show(0); autoPlay(); loadFromCloud(); setInterval(loadFromCloud, 30000);
 if(CFG.musicUrl){ audio.src=CFG.musicUrl; audio.play().catch(()=>{}); }
 document.addEventListener('click', function firstClick(){ if(CFG.musicUrl && !musicPlaying){ audio.play().then(()=>{musicPlaying=true;updateMusicUI();}).catch(()=>{}); } }, {once:true});
