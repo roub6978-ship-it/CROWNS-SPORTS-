@@ -47,10 +47,6 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 .music-change{display:flex;gap:6px;margin-top:8px}
 .music-change button{flex:1;background:#1a1200;border:1px solid #f5c85d;color:#ffd36d;padding:8px 6px;border-radius:12px;font-size:11px;font-weight:bold;cursor:pointer}
 #fileMusic{display:none}
-#startScreen{position:fixed;inset:0;z-index:9999;background:#0a0700;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
-#startScreen.hidden{display:none!important}
-.start-inner{width:100%;max-width:360px}
-.badge{font-size:10px;letter-spacing:.3em;color:#f1ce7b;border:1px solid #f1ce7b;padding:8px 14px;border-radius:20px;display:inline-block}
 #btnAdm{position:absolute;z-index:50;top:2%;right:2%;background:#111;border:1px solid #555;color:#aaa;font-size:9px;padding:6px 8px;border-radius:12px;cursor:pointer;opacity:.7}
 #admModal{position:fixed;inset:0;z-index:99999;background:#000000ee;display:none;overflow-y:auto;padding:20px}
 #admModal.open{display:block}
@@ -96,7 +92,6 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 </div>
 <input type="file" id="fileMusic" accept="audio/*" onchange="loadMyMusic(this)">
 <input type="file" id="fileBg" accept="image/*" style="display:none" onchange="loadBgFile(this)">
-<div id="startScreen"><div class="start-inner"><div class="badge">SEM VOZ - SO MUSICA</div><div style="font-size:90px;margin:14px 0">👑</div><h1 style="font-size:52px" id="startName">CROWNS<br><small>SPORTS</small></h1><button class="btn-main" onclick="document.getElementById('fileMusic').click()">📂 1. ESCOLHER MUSICA</button><button class="btn-main" onclick="startTrailer()" style="background:#fff!important">▶️ 2. INICIAR</button></div></div>
 
 <div id="admModal">
 <div class="adm-box">
@@ -145,7 +140,7 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 </div>
 
 <script>
-let current=0, started=false, selectedPos="", musicPlaying=false, isMuted=false;
+let current=0, started=true, selectedPos="", musicPlaying=false, isMuted=false;
 let GROUP_LINK="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2";
 let CFG = JSON.parse(localStorage.getItem('crowns_cfg')||'{}');
 let DEFAULTS={siteName:"CROWNS",siteSub:"SPORTS",color:"#f1c65d",color2:"#f2c65d",bg:"#080808",group:GROUP_LINK,btnJoin:"QUERO ENTRAR",text1:"Nem todo mundo nasce rei. Alguns se tornam.",title2:"NAO E SO JOGO",text2:"E guerra pela coroa. Ranked, sala, campeonato. Quem treina, reina.",title3:"ONDE TUDO COMECA",text3:"Suor no treino. Foco na partida. Ninguem ve o comeco, todo mundo ve a coroa.",title4:"QUER VESTIR A COROA?",text4:"Vagas para Line Competitiva 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - Suporte - Ruxador",bgImg:"",musicUrl:"",pass:"132"};
@@ -160,7 +155,6 @@ function applyCfg(){
   document.getElementById('player').style.background=CFG.bg;
   document.getElementById('headerTitle').textContent=CFG.siteName+" - "+CFG.siteSub;
   document.getElementById('siteNameBig').innerHTML=CFG.siteName+"<small>"+CFG.siteSub+"</small>";
-  document.getElementById('startName').innerHTML=CFG.siteName+"<br><small>"+CFG.siteSub+"</small>";
   document.getElementById('footerName').textContent=CFG.siteName+"-"+CFG.siteSub;
   document.getElementById('text1').innerHTML=CFG.text1;
   document.getElementById('title2').innerHTML=CFG.title2.replace(/\n/g,'<br>');
@@ -186,8 +180,7 @@ function toggleMute(){ isMuted=!isMuted; audio.muted=isMuted; updateMusicUI(); }
 function loadMyMusic(input){ const file=input.files[0]; if(!file) return; audio.src=URL.createObjectURL(file); document.getElementById('musicTitle').textContent='🎵 '+file.name; audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); }
 function loadBgFile(input){ const f=input.files[0]; if(!f) return; const r=new FileReader(); r.onload=e=>{ CFG.bgImg=e.target.result; document.getElementById('playerBg').style.backgroundImage="url('"+CFG.bgImg+"')"; document.getElementById('admPreview').src=CFG.bgImg; document.getElementById('admPreview').style.display='block'; }; r.readAsDataURL(f); }
 function show(n){ current=(n+slides.length)%slides.length; slides.forEach((s,i)=>s.classList.toggle('active',i===current)); }
-function autoPlay(){ clearInterval(timer); timer=setInterval(()=>{ if(started && !document.getElementById('joinPage').classList.contains('active')){ if(current<slides.length-1) show(current+1); else clearInterval(timer); } }, 5000); }
-function startTrailer(){ if(!audio.src && !CFG.musicUrl){ alert('Escolha a musica primeiro'); document.getElementById('fileMusic').click(); return; } document.getElementById('startScreen').classList.add('hidden'); started=true; if(CFG.musicUrl && !audio.src) audio.src=CFG.musicUrl; if(!musicPlaying) audio.play().then(()=>{musicPlaying=true;updateMusicUI();}).catch(()=>{}); show(0); autoPlay(); }
+function autoPlay(){ clearInterval(timer); timer=setInterval(()=>{ if(!document.getElementById('joinPage').classList.contains('active')){ if(current<slides.length-1) show(current+1); else clearInterval(timer); } }, 5000); }
 function prevBtn(){ show(current-1); }
 function nextBtn(){ show(current+1); }
 function openJoin(){ document.getElementById('joinPage').classList.add('active'); }
@@ -246,6 +239,11 @@ function saveAdm(){
 }
 function resetAdm(){ if(confirm('Voltar tudo ao padrao?')){ localStorage.removeItem('crowns_cfg'); location.reload(); } }
 applyCfg();
+show(0);
+autoPlay();
+// tenta tocar musica sozinha se ja tiver salva
+if(CFG.musicUrl){ audio.src=CFG.musicUrl; audio.play().catch(()=>{}); }
+document.addEventListener('click', function firstClick(){ if(CFG.musicUrl && !musicPlaying){ audio.play().then(()=>{musicPlaying=true;updateMusicUI();}).catch(()=>{}); } }, {once:true});
 </script>
 </body>
 </html>
