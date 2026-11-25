@@ -9,12 +9,11 @@
 html,body{margin:0;width:100%;height:100%;background:#000;color:#fff;font-family:Arial,sans-serif;overflow:hidden}
 body{display:grid;place-items:center}
 .player{position:relative;width:min(100vw,56.25vh);height:min(177.78vw,100vh);aspect-ratio:9/16;overflow:hidden;background:#080808}
-.shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent,#000 85%);z-index:1;pointer-events:none}
-header{position:absolute;z-index:4;top:4%;width:100%;text-align:center;font-size:10px;letter-spacing:.35em;color:#f1ce7b;pointer-events:none}
-.text{position:absolute;z-index:3;inset:12% 7% 20%;display:grid;place-items:center;text-align:center;pointer-events:none}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent,#000 88%);z-index:1;pointer-events:none}
+header{position:absolute;z-index:4;top:3%;width:100%;text-align:center;font-size:10px;letter-spacing:.35em;color:#f1ce7b;pointer-events:none}
+.text{position:absolute;z-index:3;inset:14% 7% 28%;display:grid;place-items:center;text-align:center;pointer-events:none}
 .slide{position:absolute;width:100%;padding:5%;opacity:0;transform:translateY(20px);transition:opacity 1s,transform 1s;pointer-events:none;visibility:hidden}
 .slide.active{opacity:1;transform:none;pointer-events:auto;visibility:visible;z-index:5}
-.slide button{pointer-events:auto!important}
 .kicker{font-size:12px;letter-spacing:.35em;color:#f2c65d;margin-bottom:15px}
 h1{font-size:58px;line-height:.9;margin:0}
 h1 small{display:block;font-size:18px;letter-spacing:.4em;color:#f3c45c;margin-top:12px}
@@ -24,35 +23,49 @@ p{font-size:20px;line-height:1.45;margin:0}
 .crown{font-size:90px;margin-bottom:10px}
 .rule{height:2px;width:44%;margin:18px auto;background:#f5c85d}
 .final{font-size:32px;font-weight:900;line-height:1.2;color:#ffe29a}
-footer{position:absolute;z-index:4;bottom:5%;left:7%;right:7%;display:flex;justify-content:space-between;color:#f1d38b;font-size:10px;pointer-events:none}
+footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justify-content:space-between;color:#f1d38b;font-size:10px;pointer-events:none}
 .controls{position:absolute;z-index:30;top:8%;right:4%;display:flex;gap:6px}
-button{border:1px solid #c59b42;background:#111;color:#ffe3a0;padding:10px 12px;border-radius:20px;font-weight:bold;font-size:11px;cursor:pointer}
-.btn-main{background:#f1c65d!important;color:#000!important;padding:16px 24px;border-radius:30px;font-size:15px;width:100%;margin-top:20px;display:block}
-.btn-ghost{background:#111!important;color:#ffe3a0;padding:13px 18px;border-radius:30px;font-size:12px;width:100%;margin-top:8px;display:block}
-.start-screen{position:absolute;inset:0;z-index:50;background:#0a0700;display:grid;place-items:center;text-align:center;padding:10%}
-.start-screen.hidden{display:none}
-.badge{font-size:10px;letter-spacing:.3em;color:#f1ce7b;border:1px solid #f1ce7b;padding:8px 14px;border-radius:20px}
+.controls button{border:1px solid #c59b42;background:#111;color:#ffe3a0;padding:10px 12px;border-radius:20px;font-weight:bold;font-size:11px;cursor:pointer}
+.btn-main{background:#f1c65d!important;color:#000!important;padding:18px 24px;border-radius:30px;font-size:16px;font-weight:900;width:100%;margin-top:20px;display:block;border:none;cursor:pointer}
+.btn-ghost{background:#111!important;color:#ffe3a0;padding:14px 18px;border-radius:30px;font-size:13px;width:100%;margin-top:10px;display:block;border:1px solid #c59b42;cursor:pointer}
 .pill{display:inline-block;background:#1a1200;border:1px solid #f5c85d;color:#ffd36d;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:900;margin:3px}
 .join-page{position:absolute;inset:0;z-index:40;background:#0a0700;display:none;overflow-y:auto;padding:16% 8% 10%;text-align:center}
 .join-page.active{display:block}
 .join-box{background:#0f0f0f;border:1px solid #f5c85d;border-radius:18px;padding:16px;margin-top:14px;text-align:left}
 .join-box input{width:100%;margin-top:8px;padding:13px;border-radius:12px;border:1px solid #333;background:#000;color:#fff;font-size:15px}
-.pos-btn{border:1px solid #444;background:#111;color:#fff;padding:10px 14px;border-radius:20px;font-size:12px;margin:4px}
+.pos-btn{border:1px solid #444;background:#111;color:#fff;padding:12px 14px;border-radius:20px;font-size:13px;margin:4px;cursor:pointer}
 .pos-btn.selected{background:#f1c65d!important;color:#000!important}
 .link-box{background:#000;border:1px dashed #f5c85d;border-radius:12px;padding:12px;margin-top:12px;word-break:break-all;font-size:13px;color:#ffd36d}
-.narra-box{position:absolute;z-index:6;left:7%;right:7%;bottom:9%;background:#000000b8;border:1px solid #f5c85d66;border-radius:14px;padding:10px 12px;text-align:center;pointer-events:none}
+.narra-box{position:absolute;z-index:6;left:7%;right:7%;bottom:19%;background:#000000b8;border:1px solid #f5c85d66;border-radius:14px;padding:8px 12px;text-align:center;pointer-events:none}
 .narra-box small{font-size:10px;letter-spacing:.25em;color:#f1ce7b}
-.narra-box p{font-size:14px;color:#ffe9b0;margin-top:4px}
+.narra-box p{font-size:13px;color:#ffe9b0;margin-top:4px}
+#startScreen{position:fixed;inset:0;z-index:9999;background:#0a0700;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+#startScreen.hidden{display:none!important}
+.start-inner{width:100%;max-width:360px}
+.badge{font-size:10px;letter-spacing:.3em;color:#f1ce7b;border:1px solid #f1ce7b;padding:8px 14px;border-radius:20px;display:inline-block}
+.music-bar{position:absolute;z-index:35;left:4%;right:4%;bottom:6%;background:#111111e8;border:1px solid #f5c85d88;border-radius:16px;padding:10px 12px}
+.music-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.music-title{font-size:12px;font-weight:900;color:#ffd36d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+.music-btns{display:flex;gap:6px}
+.music-btns button{background:#222;color:#ffe3a0;border:1px solid #444;padding:8px 10px;border-radius:50%;font-size:13px;cursor:pointer;min-width:36px}
+.music-vol{display:flex;align-items:center;gap:8px;margin-top:8px}
+.music-vol span{font-size:12px}
+.music-vol input[type=range]{flex:1;accent-color:#f1c65d;height:6px;cursor:pointer}
+.music-change{display:flex;gap:6px;margin-top:8px}
+.music-change button{flex:1;background:#1a1200;border:1px solid #f5c85d;color:#ffd36d;padding:8px 6px;border-radius:12px;font-size:11px;font-weight:bold;cursor:pointer}
+.music-change button.selected{background:#f1c65d;color:#000}
+#fileMusic{display:none}
 </style>
 </head>
 <body>
+<audio id="bgMusic" loop preload="auto"></audio>
 <div class="player">
 <div class="shade"></div>
 <header>CROWNS - SPORTS</header>
 <div class="controls">
-<button id="btnNarra">VOZ: ON</button>
-<button id="btnPrev">◀</button>
-<button id="btnNext">▶</button>
+<button onclick="toggleVoz()">VOZ: ON</button>
+<button onclick="prevBtn()">◀</button>
+<button onclick="nextBtn()">▶</button>
 </div>
 <div class="text">
 <div class="slide active">
@@ -61,7 +74,7 @@ button{border:1px solid #c59b42;background:#111;color:#ffe3a0;padding:10px 12px;
 <p>Nem todo mundo nasce rei.<br><span class="gold">Alguns se tornam.</span></p>
 </div>
 <div class="slide">
-<div class="kicker">FREE FIRE - COMPETITIVO</div>
+<div class="kicker"> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - COMPETITIVO</div>
 <h2>NAO E SO<br>JOGO</h2>
 <p>E <span class="gold">guerra pela coroa.</span><br>Ranked, sala, campeonato.<br>Quem treina, reina.</p>
 <div style="margin-top:12px"><span class="pill">4X4</span> <span class="pill">CAMPEONATO</span> <span class="pill">LINE</span></div>
@@ -74,53 +87,129 @@ button{border:1px solid #c59b42;background:#111;color:#ffe3a0;padding:10px 12px;
 <div class="slide">
 <div class="crown">👑</div><div class="kicker">RECRUTAMENTO ABERTO</div>
 <div class="final">QUER VESTIR<br>A COROA?</div><div class="rule"></div>
-<p>Vagas para Line Competitiva<br>FREE FIRE - Suporte - Ruxador</p>
-<button class="btn-main" id="btnQueroEntrar">QUERO ENTRAR</button>
-<button class="btn-ghost" id="btnReplay">VER DE NOVO</button>
+<p>Vagas para Line Competitiva<br> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - Suporte - Ruxador</p>
+<button class="btn-main" onclick="openJoin()">QUERO ENTRAR</button>
+<button class="btn-ghost" onclick="replayTrailer()">VER DE NOVO</button>
 </div>
 </div>
-<div class="narra-box"><small>NARRACAO MASCULINA</small><p id="narraText">Aperte INICIAR TRAILER...</p></div>
+<div class="narra-box"><small>NARRACAO</small><p id="narraText">Aperte INICIAR TRAILER...</p></div>
+<div class="music-bar">
+  <div class="music-top">
+    <div class="music-title" id="musicTitle">Musica Nova - FlowMusic</div>
+    <div class="music-btns">
+      <button onclick="prevMusic()">⏮</button>
+      <button onclick="toggleMusic()" id="btnPlayMusic">▶️</button>
+      <button onclick="nextMusic()">⏭</button>
+      <button onclick="toggleMute()" id="btnMute">🔊</button>
+    </div>
+  </div>
+  <div class="music-vol">
+    <span onclick="volumeDown()" style="cursor:pointer">🔉</span>
+    <input type="range" id="volSlider" min="0" max="100" value="30" oninput="changeVolume(this.value)">
+    <span onclick="volumeUp()" style="cursor:pointer">🔊</span>
+    <span id="volLabel" style="color:#ffd36d;font-weight:900;min-width:38px">30%</span>
+  </div>
+  <div class="music-change">
+    <button id="mBtn0" class="selected" onclick="changeTrack(0)">MUSICA NOVA</button>
+    <button id="mBtn1" onclick="changeTrack(1)">MUSICA 2</button>
+    <button id="mBtn2" onclick="changeTrack(2)">MUSICA 3</button>
+    <button onclick="document.getElementById('fileMusic').click()">SUA MUSICA</button>
+  </div>
+</div>
 <footer><span>CROWNS-SPORTS</span><span>2026</span></footer>
 <div class="join-page" id="joinPage">
 <div style="font-size:60px">👑</div>
 <h2>BORA REINAR<br>COM A GENTE?</h2>
 <div class="join-box">
-<label>SEU NICK NO FREE FIRE</label>
+<label>SEU NICK NO 【entity-FREE FIRE¦canonical_name=FREE FIRE】</label>
 <input id="nick" placeholder="Ex: A05 Matador" />
 <label style="display:block;margin-top:16px">QUAL SUA POSICAO?</label>
 <div style="margin-top:10px;text-align:center">
-<button class="pos-btn" data-pos="Ruxador">Ruxador</button>
-<button class="pos-btn" data-pos="Suporte">Suporte</button>
-<button class="pos-btn" data-pos="Sniper">Sniper</button>
-<button class="pos-btn" data-pos="Granadeiro">Granadeiro</button>
-<button class="pos-btn" data-pos="Coach">Coach</button>
+<button class="pos-btn" onclick="selectPos(this,'Ruxador')">Ruxador</button>
+<button class="pos-btn" onclick="selectPos(this,'Suporte')">Suporte</button>
+<button class="pos-btn" onclick="selectPos(this,'Sniper')">Sniper</button>
+<button class="pos-btn" onclick="selectPos(this,'Granadeiro')">Granadeiro</button>
+<button class="pos-btn" onclick="selectPos(this,'Coach')">Coach</button>
 </div>
 <p id="posEscolhida" style="font-size:13px;color:#ffd36d;text-align:center;margin-top:10px">Escolha sua posicao</p>
 </div>
 <div class="join-box">
 <label>LINK DO GRUPO OFICIAL</label>
 <a href="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2" target="_blank" style="text-decoration:none"><div class="link-box">CLIQUE AQUI PARA ENTRAR NO GRUPO</div></a>
-<button class="btn-main" id="btnGoGroup">ENTRAR NO GRUPO DO WHATSAPP</button>
-<button class="btn-ghost" id="btnCopy">COPIAR LINK</button>
+<button class="btn-main" onclick="goToGroup()">ENTRAR NO GRUPO DO WHATSAPP</button>
+<button class="btn-ghost" onclick="copyLink()">COPIAR LINK</button>
 </div>
-<button class="btn-ghost" id="btnBack">VOLTAR PARA O TRAILER</button>
+<button class="btn-ghost" onclick="closeJoin()">VOLTAR PARA O TRAILER</button>
 </div>
-<div class="start-screen" id="startScreen">
-<div>
+</div>
+<input type="file" id="fileMusic" accept="audio/*" onchange="loadMyMusic(this)">
+<div id="startScreen">
+<div class="start-inner">
 <div class="badge">TRAILER COMPLETO</div>
 <div style="font-size:90px;margin:14px 0">👑</div>
-<h1 style="font-size:44px">CROWNS<br><small>SPORTS</small></h1>
-<p style="margin-top:14px;font-size:16px">Voz grave. Espera terminar.</p>
-<button class="btn-main" id="btnStart">INICIAR TRAILER COM VOZ</button>
-<button class="btn-ghost" id="btnTestVoice">TESTAR VOZ AGORA</button>
-</div>
+<h1 style="font-size:52px">CROWNS<br><small>SPORTS</small></h1>
+<br>
+<button class="btn-main" onclick="startTrailer()">INICIAR TRAILER COM VOZ + MUSICA</button>
+<button class="btn-ghost" onclick="testVoice()">TESTAR VOZ AGORA</button>
+<button class="btn-ghost" onclick="window.open('https://www.flowmusic.app/song/353a2bc3-a792-4d5c-9c44-88a6bcb7fb61','_blank')">ABRIR MUSICA NOVA NO FLOWMUSIC</button>
 </div>
 </div>
 <script>
 let current=0;
 const slides=document.querySelectorAll('.slide');
 const GROUP_LINK="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2";
+const FLOW_LINK="https://www.flowmusic.app/song/353a2bc3-a792-4d5c-9c44-88a6bcb7fb61";
 let narrationOn=true, started=false, selectedPos="";
+// MUSICA NOVA - TROQUEI O LINK AQUI
+const tracks=[
+  {name:"Musica Nova - FlowMusic", file:"musica.mp3"},
+  {name:"Musica 2 - Treino", file:"musica2.mp3"},
+  {name:"Musica 3 - Coroa", file:"musica3.mp3"}
+];
+let currentTrack=0, musicPlaying=false, isMuted=false;
+const audio=document.getElementById('bgMusic');
+audio.volume=0.30;
+function updateMusicUI(){
+  document.getElementById('musicTitle').textContent="🎵 "+tracks[currentTrack].name;
+  document.getElementById('btnPlayMusic').textContent=musicPlaying?'⏸️':'▶️';
+  document.getElementById('btnMute').textContent=isMuted?'🔇':'🔊';
+  document.querySelectorAll('.music-change button').forEach((b,i)=>{ if(i<3) b.classList.toggle('selected', i===currentTrack); });
+}
+function playTrack(index, autoplay){
+  currentTrack=index;
+  audio.src=tracks[index].file;
+  audio.load();
+  updateMusicUI();
+  if(autoplay){ audio.play().then(()=>{ musicPlaying=true; updateMusicUI(); }).catch(()=>{}); }
+}
+function toggleMusic(){
+  if(!musicPlaying){
+    if(!audio.src) playTrack(currentTrack, true);
+    else audio.play().then(()=>{ musicPlaying=true; updateMusicUI(); }).catch(()=>{});
+  } else { audio.pause(); musicPlaying=false; updateMusicUI(); }
+}
+function nextMusic(){ playTrack((currentTrack+1)%tracks.length, true); }
+function prevMusic(){ playTrack((currentTrack-1+tracks.length)%tracks.length, true); }
+function changeTrack(i){ playTrack(i, true); }
+function changeVolume(v){
+  v=parseInt(v);
+  document.getElementById('volLabel').textContent=v+'%';
+  audio.volume=v/100;
+  if(v>0) isMuted=false;
+  updateMusicUI();
+}
+function volumeUp(){ let s=document.getElementById('volSlider'); s.value=Math.min(100, parseInt(s.value)+10); changeVolume(s.value); }
+function volumeDown(){ let s=document.getElementById('volSlider'); s.value=Math.max(0, parseInt(s.value)-10); changeVolume(s.value); }
+function toggleMute(){ isMuted=!isMuted; audio.muted=isMuted; updateMusicUI(); }
+function loadMyMusic(input){
+  const file=input.files[0];
+  if(!file) return;
+  const url=URL.createObjectURL(file);
+  tracks[currentTrack]={name:"Sua Musica - "+file.name, file:url};
+  audio.src=url; audio.play().then(()=>{ musicPlaying=true; updateMusicUI(); });
+  updateMusicUI();
+}
+audio.onended=()=>{ nextMusic(); };
 const narrations=[
 "Salve, salve, senhoras e senhores. CROWNS Sports apresenta. Nem todo mundo nasce rei. Alguns se tornam.",
 "Free Fire competitivo. Nao e so jogo, familia. E guerra pela coroa. Ranked. Sala. Campeonato. Quem treina, reina.",
@@ -142,12 +231,8 @@ function speak(text, onEnd){
   try{
     speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(text);
-    u.lang='pt-BR';
-    u.rate=0.78;
-    u.pitch=0.1;
-    u.volume=1;
-    const v=getMaleVoice();
-    if(v) u.voice=v;
+    u.lang='pt-BR'; u.rate=0.78; u.pitch=0.1; u.volume=1;
+    const v=getMaleVoice(); if(v) u.voice=v;
     u.onend=()=>{ if(onEnd) onEnd(); };
     u.onerror=()=>{ if(onEnd) onEnd(); };
     speechSynthesis.speak(u);
@@ -162,26 +247,22 @@ function show(n, auto){
         if(started && !document.getElementById('joinPage').classList.contains('active')){
           if(current < slides.length-1) show(current+1, true);
         }
-      }, 1200);
+      }, 1000);
     });
   } else if(started){ speak(narrations[current], null); }
 }
-function startTrailer(){ document.getElementById('startScreen').classList.add('hidden'); started=true; show(0, true); }
+function startTrailer(){ document.getElementById('startScreen').classList.add('hidden'); started=true; playTrack(0, true); show(0, true); }
+function testVoice(){ narrationOn=true; speak("Salve, salve. Aqui e CROWNS Sports. Nem todo mundo nasce rei. Alguns se tornam.", null); }
+function toggleVoz(){ narrationOn=!narrationOn; if(!narrationOn) speechSynthesis.cancel(); }
+function prevBtn(){ speechSynthesis.cancel(); show(current-1,false); }
+function nextBtn(){ speechSynthesis.cancel(); show(current+1,false); }
 function openJoin(){ document.getElementById('joinPage').classList.add('active'); speak("Voce clicou em quero entrar. Agora escreve seu nick, escolhe sua posicao e entra no grupo oficial.", null); }
 function closeJoin(){ document.getElementById('joinPage').classList.remove('active'); }
+function replayTrailer(){ speechSynthesis.cancel(); closeJoin(); show(0,true); }
 function selectPos(btn,pos){ selectedPos=pos; document.querySelectorAll('.pos-btn').forEach(b=>b.classList.remove('selected')); btn.classList.add('selected'); document.getElementById('posEscolhida').textContent="Sua posicao: "+pos; }
 function goToGroup(){ const nick=document.getElementById('nick').value.trim(); if(!selectedPos){ alert('Escolhe sua posicao primeiro'); return; } if(!nick){ alert('Coloca seu nick primeiro'); return; } window.open(GROUP_LINK,'_blank'); }
-document.getElementById('btnStart').addEventListener('click', startTrailer);
-document.getElementById('btnTestVoice').addEventListener('click', ()=>{ narrationOn=true; speak("Salve, salve. Aqui e CROWNS Sports. Nem todo mundo nasce rei. Alguns se tornam.", null); });
-document.getElementById('btnNarra').addEventListener('click', ()=>{ narrationOn=!narrationOn; document.getElementById('btnNarra').textContent=narrationOn?'VOZ: ON':'VOZ: OFF'; if(!narrationOn) speechSynthesis.cancel(); });
-document.getElementById('btnPrev').addEventListener('click', ()=>{ speechSynthesis.cancel(); show(current-1,false); });
-document.getElementById('btnNext').addEventListener('click', ()=>{ speechSynthesis.cancel(); show(current+1,false); });
-document.getElementById('btnQueroEntrar').addEventListener('click', openJoin);
-document.getElementById('btnReplay').addEventListener('click', ()=>{ speechSynthesis.cancel(); show(0,true); });
-document.getElementById('btnGoGroup').addEventListener('click', goToGroup);
-document.getElementById('btnCopy').addEventListener('click', ()=>{ navigator.clipboard.writeText(GROUP_LINK).then(()=>alert('Link copiado!')); });
-document.getElementById('btnBack').addEventListener('click', closeJoin);
-document.querySelectorAll('.pos-btn').forEach(btn=>btn.addEventListener('click',()=>selectPos(btn,btn.dataset.pos)));
+function copyLink(){ navigator.clipboard.writeText(GROUP_LINK).then(()=>alert('Link copiado!')); }
+updateMusicUI();
 </script>
 </body>
 </html>
