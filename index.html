@@ -61,6 +61,8 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 .adm-tabs{display:flex;gap:6px;margin-top:10px}
 .adm-tabs button{flex:1;padding:9px;border-radius:12px;border:1px solid #444;background:#222;color:#fff;font-size:11px;font-weight:900;cursor:pointer}
 .adm-tabs button.on{background:var(--gold,#f1c65d);color:#000}
+.adm-music-btns{display:flex;gap:6px;margin-top:8px}
+.adm-music-btns button{flex:1;padding:12px 6px;border-radius:12px;border:1px solid var(--gold,#f5c85d);background:#1a1200;color:#ffd36d;font-size:11px;font-weight:900;cursor:pointer}
 </style>
 </head>
 <body>
@@ -80,7 +82,7 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 <div class="music-bar">
   <div class="music-top"><div class="music-title" id="musicTitle">Sem musica - escolha abaixo</div><div class="music-btns"><button onclick="toggleMusic()" id="btnPlayMusic">▶️</button><button onclick="toggleMute()" id="btnMute">🔊</button></div></div>
   <div class="music-vol"><span onclick="volumeDown()" style="cursor:pointer">🔉</span><input type="range" id="volSlider" min="0" max="100" value="70" oninput="changeVolume(this.value)"><span onclick="volumeUp()" style="cursor:pointer">🔊</span><span id="volLabel" style="color:#ffd36d;font-weight:900;min-width:38px">70%</span></div>
-  <div class="music-change"><button onclick="document.getElementById('fileMusic').click()">📂 ESCOLHER MUSICA</button><button onclick="tryPlayGitHub()">▶️ MUSICA DO SITE</button><button onclick="window.open('https://www.flowmusic.app/song/353a2bc3-a792-4d5c-9c44-88a6bcb7fb61','_blank')">FLOWMUSIC</button></div>
+  <div class="music-change"><button onclick="document.getElementById('fileMusic').click()">📂 ESCOLHER MUSICA</button><button onclick="tryPlayGitHub()">▶️ MUSICA DO SITE</button><button onclick="openMusicApps()">🎵 APPS DE MUSICA</button></div>
 </div>
 <footer><span id="footerName">CROWNS-SPORTS</span><span>2026</span></footer>
 <div class="join-page" id="joinPage">
@@ -106,7 +108,7 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 <div class="adm-tabs">
 <button id="tabBtn1" class="on" onclick="showTab(1)">GERAL</button>
 <button id="tabBtn2" onclick="showTab(2)">TEXTOS</button>
-<button id="tabBtn3" onclick="showTab(3)">COR / FOTO</button>
+<button id="tabBtn3" onclick="showTab(3)">COR / FOTO / MUSICA</button>
 </div>
 <div id="tab1">
 <label>NOME DO SITE</label><input id="a_siteName" value="CROWNS">
@@ -123,19 +125,40 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 <label>TELA 3 - TITULO</label><input id="a_title3" value="ONDE TUDO COMECA">
 <label>TELA 3 - TEXTO</label><textarea id="a_text3">Suor no treino. Foco na partida. Ninguem ve o comeco, todo mundo ve a coroa.</textarea>
 <label>TELA 4 - TITULO</label><input id="a_title4" value="QUER VESTIR A COROA?">
-<label>TELA 4 - TEXTO</label><textarea id="a_text4">Vagas para Line Competitiva FREE FIRE - Suporte - Ruxador</textarea>
+<label>TELA 4 - TEXTO</label><textarea id="a_text4">Vagas para Line Competitiva 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - Suporte - Ruxador</textarea>
 </div>
 <div id="tab3" style="display:none">
+<label>🎵 MUSICA DO SITE - ESCOLHER DE ONDE</label>
+<div class="adm-music-btns">
+<button onclick="document.getElementById('fileMusic').click()">📂<br>GALERIA</button>
+<button onclick="window.open('https://www.youtube.com/','_blank')">▶️<br>YOUTUBE</button>
+<button onclick="window.open('https://play.google.com/store/apps/details?id=com.skipads.oitube.official&hl=pt_BR','_blank')">📱<br>OI TUBE</button>
+</div>
+<p style="font-size:11px;color:#aaa;margin-top:8px">Galeria = pega musica que ja esta no seu celular.<br>Youtube / Oi Tube = abre o app pra você achar a musica.</p>
+<label>MUSICA (LINK MP3 - SE TIVER)</label><input id="a_musicUrl" placeholder="Cole link mp3 se tiver">
+<button class="btn-ghost" onclick="testMusicUrl()">▶️ TESTAR MUSICA DO LINK</button>
 <label>FOTO DE FUNDO (LINK)</label><input id="a_bgImg" placeholder="Cole o link da foto ou use o botao abaixo">
 <button class="btn-ghost" onclick="document.getElementById('fileBg').click()">📷 ESCOLHER FOTO DO CELULAR</button>
 <img id="admPreview" class="adm-preview">
-<label>MUSICA (LINK MP3)</label><input id="a_musicUrl" placeholder="Cole link mp3 se tiver">
 <label>NOVA SENHA DO ADM</label><input id="a_newPass" placeholder="Deixe vazio para manter 132" inputmode="numeric">
 </div>
 <button class="btn-main" onclick="saveAdm()">💾 SALVAR TUDO</button>
 <button class="btn-ghost" onclick="resetAdm()">↩️ VOLTAR AO PADRAO</button>
 <button class="btn-ghost" onclick="closeAdm()">FECHAR ADM</button>
 </div>
+</div>
+</div>
+
+<!-- POPUP APPS DE MUSICA -->
+<div id="musicAppsModal" style="position:fixed;inset:0;z-index:999999;background:#000000ee;display:none;align-items:center;justify-content:center;padding:20px">
+<div style="background:#111;border:1px solid #f5c85d;border-radius:18px;padding:18px;width:100%;max-width:360px;text-align:center">
+<h2 style="margin:0 0 6px">🎵 MUSICA DO SITE</h2>
+<p style="font-size:13px;color:#aaa;margin:0 0 14px">Escolha de onde pegar a musica</p>
+<button class="btn-main" onclick="document.getElementById('fileMusic').click();closeMusicApps()">📂 GALERIA DO CELULAR</button>
+<button class="btn-ghost" onclick="window.open('https://www.youtube.com/','_blank')">▶️ ABRIR YOUTUBE</button>
+<button class="btn-ghost" onclick="window.open('https://play.google.com/store/apps/details?id=com.skipads.oitube.official&hl=pt_BR','_blank')">📱 ABRIR OI TUBE</button>
+<button class="btn-ghost" onclick="window.open('https://www.flowmusic.app/song/353a2bc3-a792-4d5c-9c44-88a6bcb7fb61','_blank')">🎶 FLOWMUSIC</button>
+<button class="btn-ghost" onclick="closeMusicApps()">FECHAR</button>
 </div>
 </div>
 
@@ -172,12 +195,15 @@ function applyCfg(){
 }
 function updateMusicUI(){ document.getElementById('btnPlayMusic').textContent=musicPlaying?'⏸️':'▶️'; document.getElementById('btnMute').textContent=isMuted?'🔇':'🔊'; }
 function toggleMusic(){ if(!audio.src){ document.getElementById('fileMusic').click(); return; } if(!musicPlaying){ audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); } else{ audio.pause(); musicPlaying=false; updateMusicUI(); } }
-function tryPlayGitHub(){ if(CFG.musicUrl){ audio.src=CFG.musicUrl; audio.play().then(()=>{musicPlaying=true;document.getElementById('musicTitle').textContent='🎵 Musica do site';updateMusicUI();}); return; } audio.src='musica.mp3'; audio.play().then(()=>{ musicPlaying=true; document.getElementById('musicTitle').textContent='🎵 Musica do site'; updateMusicUI(); }).catch(()=>{ alert('Musica nao encontrada. Use ESCOLHER MUSICA'); document.getElementById('fileMusic').click(); }); }
+function tryPlayGitHub(){ if(CFG.musicUrl){ audio.src=CFG.musicUrl; audio.play().then(()=>{musicPlaying=true;document.getElementById('musicTitle').textContent='🎵 Musica do site';updateMusicUI();}); return; } audio.src='musica.mp3'; audio.play().then(()=>{ musicPlaying=true; document.getElementById('musicTitle').textContent='🎵 Musica do site'; updateMusicUI(); }).catch(()=>{ openMusicApps(); }); }
+function openMusicApps(){ document.getElementById('musicAppsModal').style.display='flex'; }
+function closeMusicApps(){ document.getElementById('musicAppsModal').style.display='none'; }
+function testMusicUrl(){ const u=document.getElementById('a_musicUrl').value.trim(); if(!u){ alert('Cole o link mp3 primeiro'); return; } audio.src=u; audio.play().then(()=>{musicPlaying=true;document.getElementById('musicTitle').textContent='🎵 Musica do site';updateMusicUI(); alert('Tocando! Se gostou, aperta SALVAR TUDO');}).catch(()=>alert('Esse link nao tocou. Tenta outro link ou usa a GALERIA')); }
 function changeVolume(v){ v=parseInt(v); document.getElementById('volLabel').textContent=v+'%'; audio.volume=v/100; if(v>0){isMuted=false; audio.muted=false;} updateMusicUI(); }
 function volumeUp(){ let s=document.getElementById('volSlider'); s.value=Math.min(100,parseInt(s.value)+10); changeVolume(s.value); }
 function volumeDown(){ let s=document.getElementById('volSlider'); s.value=Math.max(0,parseInt(s.value)-10); changeVolume(s.value); }
 function toggleMute(){ isMuted=!isMuted; audio.muted=isMuted; updateMusicUI(); }
-function loadMyMusic(input){ const file=input.files[0]; if(!file) return; audio.src=URL.createObjectURL(file); document.getElementById('musicTitle').textContent='🎵 '+file.name; audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); }
+function loadMyMusic(input){ const file=input.files[0]; if(!file) return; audio.src=URL.createObjectURL(file); document.getElementById('musicTitle').textContent='🎵 '+file.name; audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); closeMusicApps(); }
 function loadBgFile(input){ const f=input.files[0]; if(!f) return; const r=new FileReader(); r.onload=e=>{ CFG.bgImg=e.target.result; document.getElementById('playerBg').style.backgroundImage="url('"+CFG.bgImg+"')"; document.getElementById('admPreview').src=CFG.bgImg; document.getElementById('admPreview').style.display='block'; }; r.readAsDataURL(f); }
 function show(n){ current=(n+slides.length)%slides.length; slides.forEach((s,i)=>s.classList.toggle('active',i===current)); }
 function autoPlay(){ clearInterval(timer); timer=setInterval(()=>{ if(!document.getElementById('joinPage').classList.contains('active')){ if(current<slides.length-1) show(current+1); else clearInterval(timer); } }, 5000); }
@@ -241,7 +267,6 @@ function resetAdm(){ if(confirm('Voltar tudo ao padrao?')){ localStorage.removeI
 applyCfg();
 show(0);
 autoPlay();
-// tenta tocar musica sozinha se ja tiver salva
 if(CFG.musicUrl){ audio.src=CFG.musicUrl; audio.play().catch(()=>{}); }
 document.addEventListener('click', function firstClick(){ if(CFG.musicUrl && !musicPlaying){ audio.play().then(()=>{musicPlaying=true;updateMusicUI();}).catch(()=>{}); } }, {once:true});
 </script>
