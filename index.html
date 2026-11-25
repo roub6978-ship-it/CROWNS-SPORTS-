@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CROWNS-SPORTS | Narração Estilo NFA</title>
+<title>CROWNS-SPORTS | Trailer Voz Masculina</title>
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;background:#050505;color:white;font-family:Arial,Helvetica,sans-serif;overflow:hidden}
 body{display:grid;place-items:center}
 .player{position:relative;width:min(100vw,56.25vh);height:min(177.78vw,100vh);aspect-ratio:9/16;overflow:hidden;background:#080808}
-.bg{position:absolute;inset:-8%;opacity:0;transform:scale(1.14);transition:opacity 1s ease;animation:drift 9s ease-in-out infinite alternate}
+.bg{position:absolute;inset:-8%;opacity:0;transform:scale(1.14);transition:opacity 1s ease;animation:drift 12s ease-in-out infinite alternate}
 .bg.active{opacity:1}
 @keyframes drift{from{transform:scale(1.12) translate3d(-1%,0,0)}to{transform:scale(1.28) translate3d(1%,-1%,0)}}
 .bg svg{width:100%;height:100%;display:block}
 .shade{position:absolute;inset:0;background:linear-gradient(180deg,#03030377 0%,#03030333 35%,#030303aa 72%,#030303ee 100%);z-index:1;pointer-events:none}
 header{position:absolute;z-index:4;top:4%;width:100%;text-align:center;font-size:10px;letter-spacing:.36em;color:#f1ce7b;pointer-events:none}
 .text{position:absolute;z-index:3;inset:12% 7% 20%;display:grid;place-items:center;text-align:center;pointer-events:none}
-.slide{position:absolute;width:100%;padding:5%;opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s;pointer-events:none;visibility:hidden}
+.slide{position:absolute;width:100%;padding:5%;opacity:0;transform:translateY(22px);transition:opacity 1.2s,transform 1.2s;pointer-events:none;visibility:hidden}
 .slide.active{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible;z-index:5}
 .slide button{pointer-events:auto !important;position:relative;z-index:10}
 .kicker{font-size:clamp(10px,2.6vw,14px);letter-spacing:.35em;color:#f2c65d;margin-bottom:7%}
@@ -25,12 +25,12 @@ h1 small{display:block;font-size:.38em;letter-spacing:.42em;color:#f3c45c;margin
 h2{font-size:clamp(28px,7.5vw,46px);line-height:1.05;color:#ffe5a0;margin:0 0 7%}
 p{font-size:clamp(17px,4.5vw,25px);line-height:1.42;margin:0}
 .gold{color:#ffd36d;font-weight:900}
-.crown{font-size:clamp(70px,18vw,115px);color:#f6ca62;text-shadow:0 0 30px #f3bd4b;margin-bottom:4%;animation:float 2.5s ease-in-out infinite}
+.crown{font-size:clamp(70px,18vw,115px);color:#f6ca62;text-shadow:0 0 30px #f3bd4b;margin-bottom:4%;animation:float 3s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .rule{height:2px;width:44%;margin:7% auto;background:linear-gradient(90deg,transparent,#f5c85d,transparent)}
 .final{font-size:clamp(23px,6.2vw,38px);font-weight:900;line-height:1.25;color:#ffe29a}
 footer{position:absolute;z-index:4;bottom:5%;left:7%;right:7%;display:flex;justify-content:space-between;color:#f1d38b;font-size:10px;letter-spacing:.2em;pointer-events:none}
-.progress{position:absolute;z-index:5;bottom:0;left:0;height:4px;background:#f1c65d;width:0;pointer-events:none}
+.progress{position:absolute;z-index:5;bottom:0;left:0;height:4px;background:#f1c65d;width:0;pointer-events:none;transition:width .2s linear}
 .controls{position:absolute;z-index:30;top:8%;right:4%;display:flex;gap:6px}
 button{border:1px solid #c59b42;background:#090909c9;color:#ffe3a0;padding:9px 12px;border-radius:20px;font-weight:bold;font-size:10px;cursor:pointer;pointer-events:auto}
 .btn-main{background:#f1c65d !important;color:#000 !important;padding:16px 24px;border-radius:30px;font-size:15px;width:100%;margin-top:8%;display:block;box-shadow:0 0 25px #f1c65d88}
@@ -49,6 +49,9 @@ button{border:1px solid #c59b42;background:#090909c9;color:#ffe3a0;padding:9px 1
 .narra-box{position:absolute;z-index:6;left:7%;right:7%;bottom:9%;background:#000000b8;border:1px solid #f5c85d66;border-radius:14px;padding:10px 12px;text-align:center;pointer-events:none}
 .narra-box small{font-size:10px;letter-spacing:.25em;color:#f1ce7b}
 .narra-box p{font-size:14px;line-height:1.35;color:#ffe9b0;margin-top:4px}
+.voice-row{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.voice-row button{font-size:11px;padding:8px 12px}
+.voice-row button.active{background:#f1c65d;color:#000}
 </style>
 </head>
 <body>
@@ -60,7 +63,7 @@ button{border:1px solid #c59b42;background:#090909c9;color:#ffe3a0;padding:9px 1
   <div class="shade"></div>
   <header>CROWNS — SPORTS</header>
   <div class="controls">
-    <button type="button" id="btnNarra">🎙️ NARRAÇÃO: ON</button>
+    <button type="button" id="btnNarra">🎙️ VOZ: ON</button>
     <button type="button" id="btnPrev">◀</button>
     <button type="button" id="btnNext">▶</button>
   </div>
@@ -71,7 +74,7 @@ button{border:1px solid #c59b42;background:#090909c9;color:#ffe3a0;padding:9px 1
       <p>Nem todo mundo nasce rei.<br><span class="gold">Alguns se tornam.</span></p>
     </div>
     <div class="slide">
-      <div class="kicker">【entity-FREE FIRE¦canonical_name=Free Fire】 • COMPETITIVO</div>
+      <div class="kicker"> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 • COMPETITIVO</div>
       <h2>NÃO É SÓ<br>JOGO</h2>
       <p>É <span class="gold">guerra pela coroa.</span><br>Ranked, sala, campeonato.<br>Quem treina, reina.</p>
       <div style="margin-top:10%"><span class="pill">🔥 4X4</span> <span class="pill">🏆 CAMPEONATO</span> <span class="pill">👑 LINE</span></div>
@@ -84,12 +87,12 @@ button{border:1px solid #c59b42;background:#090909c9;color:#ffe3a0;padding:9px 1
     <div class="slide">
       <div class="crown">👑</div><div class="kicker">🔥 RECRUTAMENTO ABERTO 🔥</div>
       <div class="final">QUER VESTIR<br>A COROA?</div><div class="rule"></div>
-      <p>Vagas para Line Competitiva<br>【entity-Free Fire¦canonical_name=Free Fire】 • Suporte • Ruxador</p>
+      <p>Vagas para Line Competitiva<br> 【entity-Free Fire¦canonical_name=FREE FIRE】 • Suporte • Ruxador</p>
       <button type="button" class="btn-main" id="btnQueroEntrar">👑 QUERO ENTRAR 👑</button>
       <button type="button" class="btn-ghost" id="btnReplay">↻ VER DE NOVO</button>
     </div>
   </div>
-  <div class="narra-box"><small>🎙️ NARRAÇÃO ESTILO NFA • EMOCIONANTE</small><p id="narraText">Aperte INICIAR TRAILER para ouvir...</p></div>
+  <div class="narra-box"><small>🎙️ NARRAÇÃO MASCULINA • ESTILO NFA</small><p id="narraText">Aperte INICIAR TRAILER para ouvir...</p></div>
   <footer><span>CROWNS-SPORTS</span><span>2026 • TRAILER</span></footer>
   <div class="progress" id="progress"></div>
 
@@ -97,7 +100,7 @@ button{border:1px solid #c59b42;background:#090909c9;color:#ffe3a0;padding:9px 1
     <div style="font-size:60px">👑</div>
     <h2>BORA REINAR<br>COM A GENTE?</h2>
     <div class="join-box">
-      <label>SEU NICK NO 【entity-FREE FIRE¦canonical_name=Free Fire】</label>
+      <label>SEU NICK NO 【entity-FREE FIRE¦canonical_name=FREE FIRE】</label>
       <input id="nick" placeholder="Ex: A05 • Matador" />
       <label style="display:block;margin-top:16px">QUAL SUA POSIÇÃO?</label>
       <div style="margin-top:10px;text-align:center">
@@ -120,50 +123,71 @@ button{border:1px solid #c59b42;background:#090909c9;color:#ffe3a0;padding:9px 1
 
   <div class="start-screen" id="startScreen">
     <div>
-      <div class="badge">TRAILER COM NARRAÇÃO ESTILO NFA</div>
+      <div class="badge">TRAILER COM VOZ MASCULINA</div>
       <div style="font-size:90px;margin:14px 0">👑</div>
       <h1 style="font-size:44px">CROWNS<br><small>SPORTS</small></h1>
-      <p style="margin-top:14px;font-size:16px">Narração emocionante, estilo narrador de campeonato.<br>Link do grupo no final.</p>
+      <p style="margin-top:14px;font-size:16px">Voz mais grave, mais lenta.<br>Cada cena dura 10 segundos.</p>
+      <div class="voice-row">
+        <button type="button" id="voiceGrave" class="active">🔊 MAIS GRAVE</button>
+        <button type="button" id="voiceNormal">🎙️ NORMAL</button>
+        <button type="button" id="voiceAgitado">🔥 AGITADO</button>
+      </div>
       <button type="button" class="btn-main" id="btnStart">▶ INICIAR TRAILER COM VOZ</button>
-      <button type="button" class="btn-ghost" id="btnTestVoice">🎙️ TESTAR VOZ ESTILO NFA</button>
-      <p style="font-size:11px;color:#aaa;margin-top:12px">A voz é gerada pelo navegador no estilo narrador esportivo. Não é a voz do Radão, é uma voz de IA inspirada no estilo dele.</p>
+      <button type="button" class="btn-ghost" id="btnTestVoice">🎙️ TESTAR VOZ AGORA</button>
+      <p style="font-size:11px;color:#aaa;margin-top:12px">Dica: no Chrome do Android, a voz mais masculina é a "Daniel" ou "Google Português". Se ficar robótica, testa os 3 botões acima.</p>
     </div>
   </div>
 </div>
 <script>
 let current=0; const slides=document.querySelectorAll('.slide'); const bgs=document.querySelectorAll('.bg'); const progress=document.getElementById('progress');
 let narrationOn=true, started=false, startTime=Date.now(), selectedPos="";
+let voiceMode='grave'; // grave, normal, agitado
+const SLIDE_TIME = 10000; // 10 SEGUNDOS POR CENA - ANTES ERA 6s
 const GROUP_LINK="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2";
-// TEXTO REESCRITO ESTILO NARRADOR NFA - EMOCIONANTE, IGUAL O RADÃO FALA
 const narrations=[
-  "Salve, salve, senhoras e senhores! CROWNS Sports apresenta! Nem todo mundo nasce rei! Alguns... se tornam!",
-  "Free Fire competitivo! Não é só jogo, família! É guerra pela coroa! Ranked! Sala! Campeonato! Quem treina... REINA!",
-  "Disciplina! Raça! Respeito! É aqui onde tudo começa! Ninguém vê o começo! Todo mundo vê a COROA!",
-  "Recrutamento aberto! Quer vestir a coroa?! Clica em quero entrar, escolhe sua posição e vem pro grupo oficial da CROWNS!"
+  "Salve, salve, senhoras e senhores... CROWNS Sports apresenta... Nem todo mundo nasce rei... Alguns... se tornam.",
+  "Free Fire competitivo... Não é só jogo, família... É guerra pela coroa... Ranked... sala... campeonato... Quem treina... REINA.",
+  "Disciplina... Raça... Respeito... É aqui onde tudo começa... Ninguém vê o começo... Todo mundo vê a COROA.",
+  "Recrutamento aberto... Quer vestir a coroa?... Clica em quero entrar, escolhe sua posição e vem pro grupo oficial da CROWNS."
 ];
-function getBestVoice(){ const v=speechSynthesis.getVoices(); return v.find(x=>x.lang==='pt-BR' && x.name.toLowerCase().includes('daniel')) || v.find(x=>x.lang==='pt-BR' && x.name.toLowerCase().includes('google')) || v.find(x=>x.lang==='pt-BR') || v.find(x=>x.lang.includes('pt')); }
+function getMaleVoice(){
+  const voices=speechSynthesis.getVoices();
+  // PROCURA PRIMEIRO VOZES MASCULINAS CONHECIDAS DO CHROME / ANDROID
+  const maleNames=['daniel','felipe','thiago','lucas','rafael','google português','microsoft daniel','antonio','carlos'];
+  for(let name of maleNames){
+    const found=voices.find(v=>v.lang.toLowerCase().includes('pt-br') && v.name.toLowerCase().includes(name));
+    if(found) return found;
+  }
+  // Se não achar, pega qualquer voz pt-BR e deixa o pitch baixo pra ficar grave
+  return voices.find(v=>v.lang.toLowerCase()==='pt-br') || voices.find(v=>v.lang.toLowerCase().includes('pt')) || voices[0];
+}
 function speak(text){
   document.getElementById('narraText').textContent=text;
   if(!narrationOn) return;
   try{
     speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(text);
-    u.lang='pt-BR'; u.rate=1.05; u.pitch=0.9; u.volume=1;
-    const v=getBestVoice(); if(v) u.voice=v;
+    u.lang='pt-BR';
+    // CONFIGURAÇÃO PRA FICAR MAIS MASCULINA E MENOS ROBÓTICA
+    if(voiceMode==='grave'){ u.rate=0.82; u.pitch=0.55; u.volume=1; }
+    else if(voiceMode==='agitado'){ u.rate=1.05; u.pitch=0.75; u.volume=1; }
+    else { u.rate=0.92; u.pitch=0.7; u.volume=1; }
+    const v=getMaleVoice(); if(v) u.voice=v;
     speechSynthesis.speak(u);
   }catch(e){}
 }
 function show(n){ current=(n+slides.length)%slides.length; slides.forEach((s,i)=>s.classList.toggle('active',i===current)); bgs.forEach((b,i)=>b.classList.toggle('active',i===current)); if(started) speak(narrations[current]); }
 function nextSlide(){ show(current+1); startTime=Date.now(); }
 function prevSlide(){ show(current-1); startTime=Date.now(); }
-function toggleNarration(){ narrationOn=!narrationOn; document.getElementById('btnNarra').textContent=narrationOn?'🎙️ NARRAÇÃO: ON':'🔇 NARRAÇÃO: OFF'; if(!narrationOn) speechSynthesis.cancel(); else speak(narrations[current]); }
-function testVoice(){ narrationOn=true; speak("Salve, salve, senhoras e senhores! Radão na área? Não! Aqui é CROWNS Sports! É a emoção do emulador! Que bala! Bora reinar com a gente?"); }
+function toggleNarration(){ narrationOn=!narrationOn; document.getElementById('btnNarra').textContent=narrationOn?'🎙️ VOZ: ON':'🔇 VOZ: OFF'; if(!narrationOn) speechSynthesis.cancel(); else speak(narrations[current]); }
+function testVoice(){ narrationOn=true; speak("Salve, salve, senhoras e senhores... Aqui é CROWNS Sports... Nem todo mundo nasce rei... Alguns se tornam... É a emoção do emulador... Bora reinar com a gente?"); }
+function setVoice(mode){ voiceMode=mode; document.querySelectorAll('.voice-row button').forEach(b=>b.classList.remove('active')); document.getElementById(mode==='grave'?'voiceGrave':mode==='normal'?'voiceNormal':'voiceAgitado').classList.add('active'); testVoice(); }
 function startTrailer(){ document.getElementById('startScreen').classList.add('hidden'); started=true; startTime=Date.now(); show(0); }
 function replay(){ closeJoin(); show(0); startTime=Date.now(); }
-function openJoin(){ document.getElementById('joinPage').classList.add('active'); speak("Você clicou em quero entrar! Agora escreve seu nick, escolhe sua posição e entra no grupo oficial da CROWNS Sports!"); }
+function openJoin(){ document.getElementById('joinPage').classList.add('active'); speak("Você clicou em quero entrar... Agora escreve seu nick, escolhe sua posição e entra no grupo oficial da CROWNS Sports."); }
 function closeJoin(){ document.getElementById('joinPage').classList.remove('active'); if(started) speak(narrations[current]); }
-function selectPos(btn,pos){ selectedPos=pos; document.querySelectorAll('.pos-btn').forEach(b=>b.classList.remove('selected')); btn.classList.add('selected'); document.getElementById('posEscolhida').textContent="Sua posição: "+pos+" ✅"; speak("Posição escolhida: "+pos+"! Que bala! Agora entra no grupo!"); }
-function goToGroup(){ const nick=document.getElementById('nick').value.trim(); if(!selectedPos){ alert('Escolhe sua posição primeiro 👑'); return; } if(!nick){ alert('Coloca seu nick primeiro 👑'); return; } speak("Boa, "+nick+"! "+selectedPos+" da CROWNS Sports! Te vejo no grupo!"); setTimeout(()=>window.open(GROUP_LINK,'_blank'),800); }
+function selectPos(btn,pos){ selectedPos=pos; document.querySelectorAll('.pos-btn').forEach(b=>b.classList.remove('selected')); btn.classList.add('selected'); document.getElementById('posEscolhida').textContent="Sua posição: "+pos+" ✅"; speak("Posição escolhida: "+pos+"... Agora entra no grupo!"); }
+function goToGroup(){ const nick=document.getElementById('nick').value.trim(); if(!selectedPos){ alert('Escolhe sua posição primeiro 👑'); return; } if(!nick){ alert('Coloca seu nick primeiro 👑'); return; } speak("Boa, "+nick+"... "+selectedPos+" da CROWNS Sports... Te vejo no grupo!"); setTimeout(()=>window.open(GROUP_LINK,'_blank'),900); }
 function copyLink(){ navigator.clipboard.writeText(GROUP_LINK).then(()=>alert('Link copiado! 👑')); }
 document.getElementById('btnStart').addEventListener('click',startTrailer);
 document.getElementById('btnTestVoice').addEventListener('click',testVoice);
@@ -175,8 +199,12 @@ document.getElementById('btnReplay').addEventListener('click',replay);
 document.getElementById('btnGoGroup').addEventListener('click',goToGroup);
 document.getElementById('btnCopy').addEventListener('click',copyLink);
 document.getElementById('btnBack').addEventListener('click',closeJoin);
+document.getElementById('voiceGrave').addEventListener('click',()=>setVoice('grave'));
+document.getElementById('voiceNormal').addEventListener('click',()=>setVoice('normal'));
+document.getElementById('voiceAgitado').addEventListener('click',()=>setVoice('agitado'));
 document.querySelectorAll('.pos-btn').forEach(btn=>btn.addEventListener('click',()=>selectPos(btn,btn.dataset.pos)));
-function loop(){ if(started && !document.getElementById('joinPage').classList.contains('active')){ const e=Date.now()-startTime; progress.style.width=Math.min(100,(e/16000)*100)+'%'; if(e>6000){ show(current+1); startTime=Date.now(); } } requestAnimationFrame(loop); } loop();
+if('speechSynthesis' in window){ speechSynthesis.onvoiceschanged=()=>{}; }
+function loop(){ if(started && !document.getElementById('joinPage').classList.contains('active')){ const e=Date.now()-startTime; progress.style.width=Math.min(100,(e/SLIDE_TIME)*100)+'%'; if(e>SLIDE_TIME){ show(current+1); startTime=Date.now(); } } requestAnimationFrame(loop); } loop();
 </script>
 </body>
-    </html>
+</html>
