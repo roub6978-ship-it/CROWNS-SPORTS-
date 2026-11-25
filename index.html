@@ -63,7 +63,7 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 .adm-tabs button.on{background:var(--gold,#f1c65d);color:#000}
 .adm-music-btns{display:flex;gap:6px;margin-top:8px}
 .adm-music-btns button{flex:1;padding:12px 6px;border-radius:12px;border:1px solid var(--gold,#f5c85d);background:#1a1200;color:#ffd36d;font-size:11px;font-weight:900;cursor:pointer}
-.sync-box{background:#0a2a00;border:1px solid #4caf50;border-radius:12px;padding:10px;margin-top:12px;font-size:12px}
+.sync-box{background:#0a2a00;border:1px solid #4caf50;border-radius:12px;padding:14px;margin-top:12px;font-size:13px;text-align:center}
 </style>
 </head>
 <body>
@@ -95,7 +95,6 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 </div>
 <input type="file" id="fileMusic" accept="audio/*" onchange="loadMyMusic(this)">
 <input type="file" id="fileBg" accept="image/*" style="display:none" onchange="loadBgFile(this)">
-
 <div id="admModal">
 <div class="adm-box">
 <h2>👑 ÁREA DE ADM</h2>
@@ -145,17 +144,11 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 </div>
 <div id="tab4" style="display:none">
 <div class="sync-box">
-<b>🌐 PRA MUDAR PRA TODO MUNDO</b><br><br>
-<b>PASSO 1:</b> Entra em <b>npoint.io</b><br>
-<b>PASSO 2:</b> Aperta New, cola <b>{"siteName":"CROWNS"}</b> e Save<br>
-<b>PASSO 3:</b> Copia o código que aparecer (ex: a1b2c3d4)<br>
-<b>PASSO 4:</b> Cola aqui embaixo e aperta SALVAR
+<b>🌐 SEU SYNC JÁ ESTÁ PRONTO</b><br><br>
+Código: <b>1669f9d482974ec189d2</b><br><br>
+<span id="syncStatus2" style="font-weight:900;color:#ffd36d">Status: ✅ ATIVADO</span><br><br>
+É só mexer e apertar SALVAR TUDO que muda pra todo mundo.
 </div>
-<label>ID DO SYNC (NPOINT)</label><input id="a_syncId" placeholder="Ex: a1b2c3d4e5f6 - deixe vazio se nao tiver">
-<button class="btn-ghost" onclick="testSync()">🔄 TESTAR SYNC AGORA</button>
-<p id="syncStatus" style="font-size:12px;color:#4caf50"></p>
-<label>OU USE O LINK - FUNCIONA SEM NPOINT</label>
-<p style="font-size:11px;color:#aaa">Depois de SALVAR, aperta o botão abaixo e manda o link no grupo. Quem abrir por ele já vê tudo novo.</p>
 <button class="btn-ghost" onclick="copyShareLink()">🔗 COPIAR LINK PRA TODOS</button>
 </div>
 <button class="btn-main" onclick="saveAdm()">💾 SALVAR TUDO</button>
@@ -165,7 +158,6 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 </div>
 </div>
 </div>
-
 <div id="musicAppsModal" style="position:fixed;inset:0;z-index:999999;background:#000000ee;display:none;align-items:center;justify-content:center;padding:20px">
 <div style="background:#111;border:1px solid #f5c85d;border-radius:18px;padding:18px;width:100%;max-width:360px;text-align:center">
 <h2 style="margin:0 0 6px">🎵 MUSICA DO SITE</h2>
@@ -177,47 +169,15 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 <button class="btn-ghost" onclick="closeMusicApps()">FECHAR</button>
 </div>
 </div>
-
 <script>
 let current=0, started=true, selectedPos="", musicPlaying=false, isMuted=false;
 let GROUP_LINK="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2";
 let CFG = JSON.parse(localStorage.getItem('crowns_cfg')||'{}');
-let DEFAULTS={siteName:"CROWNS",siteSub:"SPORTS",color:"#f1c65d",color2:"#f2c65d",bg:"#080808",group:GROUP_LINK,btnJoin:"QUERO ENTRAR",text1:"Nem todo mundo nasce rei. Alguns se tornam.",title2:"NAO E SO JOGO",text2:"E guerra pela coroa. Ranked, sala, campeonato. Quem treina, reina.",title3:"ONDE TUDO COMECA",text3:"Suor no treino. Foco na partida. Ninguem ve o comeco, todo mundo ve a coroa.",title4:"QUER VESTIR A COROA?",text4:"Vagas para Line Competitiva 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - Suporte - Ruxador",bgImg:"",musicUrl:"",pass:"132",syncId:"",updated:0};
-CFG={...DEFAULTS,...CFG};
-// 1 - SE VEIO POR LINK COMPARTILHADO ?cfg=...
-try{
-  const params=new URLSearchParams(location.search);
-  if(params.get('cfg')){
-    const fromLink=JSON.parse(decodeURIComponent(atob(params.get('cfg'))));
-    CFG={...CFG,...fromLink};
-    localStorage.setItem('crowns_cfg',JSON.stringify(CFG));
-  }
-}catch(e){}
-const slides=document.querySelectorAll('.slide');
-const audio=document.getElementById('bgMusic');
-audio.volume=0.70;
-let timer=null;
-function applyCfg(){
-  document.documentElement.style.setProperty('--gold',CFG.color);
-  document.documentElement.style.setProperty('--gold2',CFG.color2);
-  document.getElementById('player').style.background=CFG.bg;
-  document.getElementById('headerTitle').textContent=CFG.siteName+" - "+CFG.siteSub;
-  document.getElementById('siteNameBig').innerHTML=CFG.siteName+"<small>"+CFG.siteSub+"</small>";
-  document.getElementById('footerName').textContent=CFG.siteName+"-"+CFG.siteSub;
-  document.getElementById('text1').innerHTML=CFG.text1;
-  document.getElementById('title2').innerHTML=CFG.title2.replace(/\n/g,'<br>');
-  document.getElementById('text2').innerHTML=CFG.text2;
-  document.getElementById('title3').innerHTML=CFG.title3.replace(/\n/g,'<br>');
-  document.getElementById('text3').innerHTML=CFG.text3;
-  document.getElementById('title4').innerHTML=CFG.title4.replace(/\n/g,'<br>');
-  document.getElementById('text4').innerHTML=CFG.text4;
-  document.getElementById('btnJoinText').textContent=CFG.btnJoin;
-  GROUP_LINK=CFG.group;
-  document.getElementById('groupLinkA').href=CFG.group;
-  if(CFG.bgImg && !CFG.bgImg.startsWith('data:')){ document.getElementById('playerBg').style.backgroundImage="url('"+CFG.bgImg+"')"; }
-  if(CFG.musicUrl && !audio.src){ audio.src=CFG.musicUrl; }
-  updateMusicUI();
-}
+let DEFAULTS={siteName:"CROWNS",siteSub:"SPORTS",color:"#f1c65d",color2:"#f2c65d",bg:"#080808",group:GROUP_LINK,btnJoin:"QUERO ENTRAR",text1:"Nem todo mundo nasce rei. Alguns se tornam.",title2:"NAO E SO JOGO",text2:"E guerra pela coroa. Ranked, sala, campeonato. Quem treina, reina.",title3:"ONDE TUDO COMECA",text3:"Suor no treino. Foco na partida. Ninguem ve o comeco, todo mundo ve a coroa.",title4:"QUER VESTIR A COROA?",text4:"Vagas para Line Competitiva FREE FIRE - Suporte - Ruxador",bgImg:"",musicUrl:"",pass:"132",syncId:"1669f9d482974ec189d2",syncOn:1,updated:0};
+CFG={...DEFAULTS,...CFG, syncId:"1669f9d482974ec189d2", syncOn:1};
+try{ const params=new URLSearchParams(location.search); if(params.get('cfg')){ const fromLink=JSON.parse(decodeURIComponent(atob(params.get('cfg')))); CFG={...CFG,...fromLink, syncId:"1669f9d482974ec189d2", syncOn:1}; localStorage.setItem('crowns_cfg',JSON.stringify(CFG)); } }catch(e){}
+const slides=document.querySelectorAll('.slide'); const audio=document.getElementById('bgMusic'); audio.volume=0.70; let timer=null;
+function applyCfg(){ document.documentElement.style.setProperty('--gold',CFG.color); document.documentElement.style.setProperty('--gold2',CFG.color2); document.getElementById('player').style.background=CFG.bg; document.getElementById('headerTitle').textContent=CFG.siteName+" - "+CFG.siteSub; document.getElementById('siteNameBig').innerHTML=CFG.siteName+"<small>"+CFG.siteSub+"</small>"; document.getElementById('footerName').textContent=CFG.siteName+"-"+CFG.siteSub; document.getElementById('text1').innerHTML=CFG.text1; document.getElementById('title2').innerHTML=CFG.title2.replace(/\n/g,'<br>'); document.getElementById('text2').innerHTML=CFG.text2; document.getElementById('title3').innerHTML=CFG.title3.replace(/\n/g,'<br>'); document.getElementById('text3').innerHTML=CFG.text3; document.getElementById('title4').innerHTML=CFG.title4.replace(/\n/g,'<br>'); document.getElementById('text4').innerHTML=CFG.text4; document.getElementById('btnJoinText').textContent=CFG.btnJoin; GROUP_LINK=CFG.group; document.getElementById('groupLinkA').href=CFG.group; if(CFG.bgImg && !CFG.bgImg.startsWith('data:')){ document.getElementById('playerBg').style.backgroundImage="url('"+CFG.bgImg+"')"; } if(CFG.musicUrl && !audio.src){ audio.src=CFG.musicUrl; } updateMusicUI(); }
 function updateMusicUI(){ document.getElementById('btnPlayMusic').textContent=musicPlaying?'⏸️':'▶️'; document.getElementById('btnMute').textContent=isMuted?'🔇':'🔊'; }
 function toggleMusic(){ if(!audio.src){ document.getElementById('fileMusic').click(); return; } if(!musicPlaying){ audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); } else{ audio.pause(); musicPlaying=false; updateMusicUI(); } }
 function tryPlayGitHub(){ if(CFG.musicUrl){ audio.src=CFG.musicUrl; audio.play().then(()=>{musicPlaying=true;document.getElementById('musicTitle').textContent='🎵 Musica do site';updateMusicUI();}); return; } audio.src='musica.mp3'; audio.play().then(()=>{ musicPlaying=true; document.getElementById('musicTitle').textContent='🎵 Musica do site'; updateMusicUI(); }).catch(()=>{ openMusicApps(); }); }
@@ -232,11 +192,8 @@ function loadMyMusic(input){ const file=input.files[0]; if(!file) return; audio.
 function loadBgFile(input){ const f=input.files[0]; if(!f) return; const r=new FileReader(); r.onload=e=>{ CFG.bgImg=e.target.result; document.getElementById('playerBg').style.backgroundImage="url('"+CFG.bgImg+"')"; document.getElementById('admPreview').src=CFG.bgImg; document.getElementById('admPreview').style.display='block'; alert('Foto escolhida! Mas foto do celular NÃO vai pra outra pessoa, só link de foto vai. Usa link pra valer pra todos.'); }; r.readAsDataURL(f); }
 function show(n){ current=(n+slides.length)%slides.length; slides.forEach((s,i)=>s.classList.toggle('active',i===current)); }
 function autoPlay(){ clearInterval(timer); timer=setInterval(()=>{ if(!document.getElementById('joinPage').classList.contains('active')){ if(current<slides.length-1) show(current+1); else clearInterval(timer); } }, 5000); }
-function prevBtn(){ show(current-1); }
-function nextBtn(){ show(current+1); }
-function openJoin(){ document.getElementById('joinPage').classList.add('active'); }
-function closeJoin(){ document.getElementById('joinPage').classList.remove('active'); }
-function replayTrailer(){ closeJoin(); show(0); autoPlay(); }
+function prevBtn(){ show(current-1); } function nextBtn(){ show(current+1); }
+function openJoin(){ document.getElementById('joinPage').classList.add('active'); } function closeJoin(){ document.getElementById('joinPage').classList.remove('active'); } function replayTrailer(){ closeJoin(); show(0); autoPlay(); }
 function selectPos(btn,pos){ selectedPos=pos; document.querySelectorAll('.pos-btn').forEach(b=>b.classList.remove('selected')); btn.classList.add('selected'); document.getElementById('posEscolhida').textContent="Sua posicao: "+pos; }
 function goToGroup(){ const nick=document.getElementById('nick').value.trim(); if(!selectedPos){ alert('Escolhe sua posicao primeiro'); return; } if(!nick){ alert('Coloca seu nick primeiro'); return; } window.open(GROUP_LINK,'_blank'); }
 function copyLink(){ navigator.clipboard.writeText(GROUP_LINK).then(()=>alert('Link copiado!')); }
@@ -244,88 +201,13 @@ function openAdm(){ document.getElementById('admModal').classList.add('open'); d
 function closeAdm(){ document.getElementById('admModal').classList.remove('open'); }
 function checkAdm(){ const p=document.getElementById('admPass').value; if(p===String(CFG.pass)){ document.getElementById('admLogin').style.display='none'; document.getElementById('admPanel').style.display='block'; fillAdm(); } else { alert('Senha errada!'); } }
 function showTab(n){ [1,2,3,4].forEach(i=>{ const el=document.getElementById('tab'+i); if(el) el.style.display=i===n?'block':'none'; document.getElementById('tabBtn'+i).classList.toggle('on',i===n); }); }
-function fillAdm(){
-  document.getElementById('a_siteName').value=CFG.siteName;
-  document.getElementById('a_siteSub').value=CFG.siteSub;
-  document.getElementById('a_color').value=CFG.color;
-  document.getElementById('a_color2').value=CFG.color2;
-  document.getElementById('a_bg').value=CFG.bg;
-  document.getElementById('a_group').value=CFG.group;
-  document.getElementById('a_btnJoin').value=CFG.btnJoin;
-  document.getElementById('a_text1').value=CFG.text1;
-  document.getElementById('a_title2').value=CFG.title2;
-  document.getElementById('a_text2').value=CFG.text2;
-  document.getElementById('a_title3').value=CFG.title3;
-  document.getElementById('a_text3').value=CFG.text3;
-  document.getElementById('a_title4').value=CFG.title4;
-  document.getElementById('a_text4').value=CFG.text4;
-  document.getElementById('a_bgImg').value=CFG.bgImg && !CFG.bgImg.startsWith('data:')?CFG.bgImg:'';
-  document.getElementById('a_musicUrl').value=CFG.musicUrl;
-  document.getElementById('a_syncId').value=CFG.syncId||'';
-  if(CFG.bgImg && !CFG.bgImg.startsWith('data:')){ document.getElementById('admPreview').src=CFG.bgImg; document.getElementById('admPreview').style.display='block'; }
-}
-async function saveToCloud(){
-  if(!CFG.syncId) return;
-  try{ await fetch('https://api.npoint.io/'+CFG.syncId,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(CFG)}); }catch(e){ console.log('cloud falhou',e); }
-}
-async function loadFromCloud(){
-  if(!CFG.syncId) return;
-  try{
-    const r=await fetch('https://api.npoint.io/'+CFG.syncId);
-    if(!r.ok) return;
-    const cloud=await r.json();
-    if(cloud && cloud.updated && cloud.updated> (CFG.updated||0)){
-      CFG={...CFG,...cloud};
-      localStorage.setItem('crowns_cfg',JSON.stringify(CFG));
-      applyCfg();
-    }
-  }catch(e){}
-}
-function copyShareLink(){
-  // nao inclui foto do celular nem senha no link
-  const toShare={...CFG}; delete toShare.pass; delete toShare.syncId;
-  if(toShare.bgImg && toShare.bgImg.startsWith('data:')) toShare.bgImg='';
-  const code=btoa(encodeURIComponent(JSON.stringify(toShare)));
-  const base=location.href.split('?')[0];
-  const link=base+'?cfg='+code;
-  navigator.clipboard.writeText(link).then(()=>alert('Link copiado! ✅\nManda esse link no grupo. Quem abrir por ele vai ver tudo novo.')).catch(()=>{ prompt('Copia esse link e manda no grupo:',link); });
-}
-function testSync(){ const id=document.getElementById('a_syncId').value.trim(); if(!id){ alert('Cola o ID do npoint primeiro'); return; } CFG.syncId=id; document.getElementById('syncStatus').textContent='Testando...'; fetch('https://api.npoint.io/'+id).then(r=>r.json()).then(j=>{ document.getElementById('syncStatus').textContent='✅ Conectado! Achou: '+(j.siteName||'CROWNS'); }).catch(()=>{ document.getElementById('syncStatus').textContent='❌ Não achou. Confere o ID no npoint.io'; }); }
-async function saveAdm(){
-  CFG.siteName=document.getElementById('a_siteName').value||"CROWNS";
-  CFG.siteSub=document.getElementById('a_siteSub').value||"SPORTS";
-  CFG.color=document.getElementById('a_color').value;
-  CFG.color2=document.getElementById('a_color2').value;
-  CFG.bg=document.getElementById('a_bg').value;
-  CFG.group=document.getElementById('a_group').value;
-  CFG.btnJoin=document.getElementById('a_btnJoin').value;
-  CFG.text1=document.getElementById('a_text1').value;
-  CFG.title2=document.getElementById('a_title2').value;
-  CFG.text2=document.getElementById('a_text2').value;
-  CFG.title3=document.getElementById('a_title3').value;
-  CFG.text3=document.getElementById('a_text3').value;
-  CFG.title4=document.getElementById('a_title4').value;
-  CFG.text4=document.getElementById('a_text4').value;
-  const linkBg=document.getElementById('a_bgImg').value.trim();
-  if(linkBg) CFG.bgImg=linkBg;
-  CFG.musicUrl=document.getElementById('a_musicUrl').value.trim();
-  CFG.syncId=document.getElementById('a_syncId').value.trim();
-  CFG.updated=Date.now();
-  const np=document.getElementById('a_newPass').value.trim();
-  if(np) CFG.pass=np;
-  localStorage.setItem('crowns_cfg',JSON.stringify(CFG));
-  applyCfg();
-  await saveToCloud();
-  if(CFG.syncId){ alert('Salvo na nuvem! ✅\nAgora vai mudar pra todo mundo sozinho em até 30 segundos.'); }
-  else { alert('Salvo! ✅\nAgora aperta COPIAR LINK PRA TODOS e manda no grupo pra valer pra todos. Ou coloca o ID do SYNC na aba SYNC pra ficar automatico.'); }
-  closeAdm();
-}
+function fillAdm(){ document.getElementById('a_siteName').value=CFG.siteName; document.getElementById('a_siteSub').value=CFG.siteSub; document.getElementById('a_color').value=CFG.color; document.getElementById('a_color2').value=CFG.color2; document.getElementById('a_bg').value=CFG.bg; document.getElementById('a_group').value=CFG.group; document.getElementById('a_btnJoin').value=CFG.btnJoin; document.getElementById('a_text1').value=CFG.text1; document.getElementById('a_title2').value=CFG.title2; document.getElementById('a_text2').value=CFG.text2; document.getElementById('a_title3').value=CFG.title3; document.getElementById('a_text3').value=CFG.text3; document.getElementById('a_title4').value=CFG.title4; document.getElementById('a_text4').value=CFG.text4; document.getElementById('a_bgImg').value=CFG.bgImg && !CFG.bgImg.startsWith('data:')?CFG.bgImg:''; document.getElementById('a_musicUrl').value=CFG.musicUrl; if(CFG.bgImg && !CFG.bgImg.startsWith('data:')){ document.getElementById('admPreview').src=CFG.bgImg; document.getElementById('admPreview').style.display='block'; } }
+async function saveToCloud(){ try{ await fetch('https://api.npoint.io/'+CFG.syncId,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(CFG)}); }catch(e){} }
+async function loadFromCloud(){ try{ const r=await fetch('https://api.npoint.io/'+CFG.syncId); if(!r.ok) return; const cloud=await r.json(); if(cloud && cloud.updated && cloud.updated>(CFG.updated||0)){ CFG={...CFG,...cloud, syncId:"1669f9d482974ec189d2", syncOn:1}; localStorage.setItem('crowns_cfg',JSON.stringify(CFG)); applyCfg(); } }catch(e){} }
+function copyShareLink(){ const toShare={...CFG}; delete toShare.pass; if(toShare.bgImg && toShare.bgImg.startsWith('data:')) toShare.bgImg=''; const code=btoa(encodeURIComponent(JSON.stringify(toShare))); const base=location.href.split('?')[0]; const link=base+'?cfg='+code; navigator.clipboard.writeText(link).then(()=>alert('Link copiado! ✅\nManda esse link no grupo. Quem abrir por ele vai ver tudo novo.')).catch(()=>{ prompt('Copia esse link e manda no grupo:',link); }); }
+async function saveAdm(){ CFG.siteName=document.getElementById('a_siteName').value||"CROWNS"; CFG.siteSub=document.getElementById('a_siteSub').value||"SPORTS"; CFG.color=document.getElementById('a_color').value; CFG.color2=document.getElementById('a_color2').value; CFG.bg=document.getElementById('a_bg').value; CFG.group=document.getElementById('a_group').value; CFG.btnJoin=document.getElementById('a_btnJoin').value; CFG.text1=document.getElementById('a_text1').value; CFG.title2=document.getElementById('a_title2').value; CFG.text2=document.getElementById('a_text2').value; CFG.title3=document.getElementById('a_title3').value; CFG.text3=document.getElementById('a_text3').value; CFG.title4=document.getElementById('a_title4').value; CFG.text4=document.getElementById('a_text4').value; const linkBg=document.getElementById('a_bgImg').value.trim(); if(linkBg) CFG.bgImg=linkBg; CFG.musicUrl=document.getElementById('a_musicUrl').value.trim(); CFG.updated=Date.now(); CFG.syncId="1669f9d482974ec189d2"; CFG.syncOn=1; const np=document.getElementById('a_newPass').value.trim(); if(np) CFG.pass=np; localStorage.setItem('crowns_cfg',JSON.stringify(CFG)); applyCfg(); await saveToCloud(); alert('Salvo na nuvem! ✅\nVai mudar pra todo mundo sozinho em até 30 segundos.'); closeAdm(); }
 function resetAdm(){ if(confirm('Voltar tudo ao padrao?')){ localStorage.removeItem('crowns_cfg'); location.reload(); } }
-applyCfg();
-show(0);
-autoPlay();
-loadFromCloud();
-setInterval(loadFromCloud, 30000);
+applyCfg(); show(0); autoPlay(); loadFromCloud(); setInterval(loadFromCloud, 30000);
 if(CFG.musicUrl){ audio.src=CFG.musicUrl; audio.play().catch(()=>{}); }
 document.addEventListener('click', function firstClick(){ if(CFG.musicUrl && !musicPlaying){ audio.play().then(()=>{musicPlaying=true;updateMusicUI();}).catch(()=>{}); } }, {once:true});
 </script>
