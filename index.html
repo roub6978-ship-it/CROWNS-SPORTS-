@@ -76,13 +76,13 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 <header id="headerTitle">CROWNS - SPORTS</header>
 <div class="controls"><button onclick="prevBtn()">◀</button><button onclick="nextBtn()">▶</button></div>
 <div class="text">
-<div class="slide active"><div class="crown" id="emoji1">👑</div><div class="kicker">APRESENTA</div><h1 id="siteNameBig">CROWNS<small id="siteSubBig">SPORTS</small></h1><div class="rule"></div><p id="text1">Nem todo mundo nasce rei.<br><span class="gold">Alguns se tornam.</span></p></div>
-<div class="slide"><div class="kicker" id="kicker2">【entity-FREE FIRE¦canonical_name=FREE FIRE】 - COMPETITIVO</div><h2 id="title2">NAO E SO<br>JOGO</h2><p id="text2">E <span class="gold">guerra pela coroa.</span><br>Ranked, sala, campeonato.<br>Quem treina, reina.</p><div style="margin-top:12px"><span class="pill">4X4</span> <span class="pill">CAMPEONATO</span> <span class="pill">LINE</span></div></div>
-<div class="slide"><div class="kicker" id="kicker3">DISCIPLINA - RACA - RESPEITO</div><h2 id="title3">ONDE TUDO<br>COMECA</h2><p id="text3">Suor no treino.<br>Foco na partida.<br>Ninguem ve o comeco,<br>todo mundo ve a <span class="gold">coroa.</span></p></div>
+<div class="slide active"><div class="crown">👑</div><div class="kicker">APRESENTA</div><h1 id="siteNameBig">CROWNS<small>SPORTS</small></h1><div class="rule"></div><p id="text1">Nem todo mundo nasce rei.<br><span class="gold">Alguns se tornam.</span></p></div>
+<div class="slide"><div class="kicker"> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - COMPETITIVO</div><h2 id="title2">NAO E SO<br>JOGO</h2><p id="text2">E <span class="gold">guerra pela coroa.</span><br>Ranked, sala, campeonato.<br>Quem treina, reina.</p><div style="margin-top:12px"><span class="pill">4X4</span> <span class="pill">CAMPEONATO</span> <span class="pill">LINE</span></div></div>
+<div class="slide"><div class="kicker">DISCIPLINA - RACA - RESPEITO</div><h2 id="title3">ONDE TUDO<br>COMECA</h2><p id="text3">Suor no treino.<br>Foco na partida.<br>Ninguem ve o comeco,<br>todo mundo ve a <span class="gold">coroa.</span></p></div>
 <div class="slide"><div class="crown">👑</div><div class="kicker">RECRUTAMENTO ABERTO</div><div class="final" id="title4">QUER VESTIR<br>A COROA?</div><div class="rule"></div><p id="text4">Vagas para Line Competitiva<br> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - Suporte - Ruxador</p><button class="btn-main" onclick="openJoin()" id="btnJoinText">QUERO ENTRAR</button><button class="btn-ghost" onclick="replayTrailer()">VER DE NOVO</button></div>
 </div>
 <div class="music-bar">
-  <div class="music-top"><div class="music-title" id="musicTitle">Sem musica - escolha abaixo</div><div class="music-btns"><button onclick="toggleMusic()" id="btnPlayMusic">▶️</button><button onclick="toggleMute()" id="btnMute">🔊</button><button onclick="toggleVoice()" id="btnVoice">🎙️</button></div></div>
+  <div class="music-top"><div class="music-title" id="musicTitle">Sem musica - escolha abaixo</div><div class="music-btns"><button onclick="toggleMusic()" id="btnPlayMusic">▶️</button><button onclick="toggleMute()" id="btnMute">🔊</button></div></div>
   <div class="music-vol"><span onclick="volumeDown()" style="cursor:pointer">🔉</span><input type="range" id="volSlider" min="0" max="100" value="70" oninput="changeVolume(this.value)"><span onclick="volumeUp()" style="cursor:pointer">🔊</span><span id="volLabel" style="color:#ffd36d;font-weight:900;min-width:38px">70%</span></div>
   <div class="music-change"><button onclick="document.getElementById('fileMusic').click()">📂 ESCOLHER MUSICA</button><button onclick="tryPlayGitHub()">▶️ MUSICA DO SITE</button><button onclick="window.open('https://www.flowmusic.app/song/353a2bc3-a792-4d5c-9c44-88a6bcb7fb61','_blank')">FLOWMUSIC</button></div>
 </div>
@@ -96,9 +96,8 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 </div>
 <input type="file" id="fileMusic" accept="audio/*" onchange="loadMyMusic(this)">
 <input type="file" id="fileBg" accept="image/*" style="display:none" onchange="loadBgFile(this)">
-<div id="startScreen"><div class="start-inner"><div class="badge" id="badgeStart">VOZ NORMAL + MUSICA</div><div style="font-size:90px;margin:14px 0">👑</div><h1 style="font-size:52px" id="startName">CROWNS<br><small>SPORTS</small></h1><button class="btn-main" onclick="document.getElementById('fileMusic').click()">📂 1. ESCOLHER MUSICA</button><button class="btn-main" onclick="startTrailer()" style="background:#fff!important">▶️ 2. INICIAR COM VOZ</button></div></div>
+<div id="startScreen"><div class="start-inner"><div class="badge">SEM VOZ - SO MUSICA</div><div style="font-size:90px;margin:14px 0">👑</div><h1 style="font-size:52px" id="startName">CROWNS<br><small>SPORTS</small></h1><button class="btn-main" onclick="document.getElementById('fileMusic').click()">📂 1. ESCOLHER MUSICA</button><button class="btn-main" onclick="startTrailer()" style="background:#fff!important">▶️ 2. INICIAR</button></div></div>
 
-<!-- ADM -->
 <div id="admModal">
 <div class="adm-box">
 <h2>👑 ÁREA DE ADM</h2>
@@ -107,13 +106,12 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 <input type="password" id="admPass" placeholder="Digite a senha" inputmode="numeric">
 <button class="btn-main" onclick="checkAdm()">ENTRAR</button>
 <button class="btn-ghost" onclick="closeAdm()">FECHAR</button>
-<p style="font-size:11px;color:#888;text-align:center">Senha atual: 132</p>
 </div>
 <div id="admPanel" style="display:none">
 <div class="adm-tabs">
 <button id="tabBtn1" class="on" onclick="showTab(1)">GERAL</button>
 <button id="tabBtn2" onclick="showTab(2)">TEXTOS</button>
-<button id="tabBtn3" onclick="showTab(3)">VOZ / COR / FOTO</button>
+<button id="tabBtn3" onclick="showTab(3)">COR / FOTO</button>
 </div>
 <div id="tab1">
 <label>NOME DO SITE</label><input id="a_siteName" value="CROWNS">
@@ -133,11 +131,6 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 <label>TELA 4 - TEXTO</label><textarea id="a_text4">Vagas para Line Competitiva FREE FIRE - Suporte - Ruxador</textarea>
 </div>
 <div id="tab3" style="display:none">
-<label>VOZ DO NARRADOR</label>
-<select id="a_voiceOn"><option value="1">Ligada</option><option value="0">Desligada</option></select>
-<div class="adm-row"><div><label>VELOCIDADE (0.5 a 1.5)</label><input type="number" step="0.05" min="0.5" max="1.5" id="a_rate" value="0.92"></div><div><label>TOM / GRAVE (0.5 a 1.5)</label><input type="number" step="0.05" min="0.5" max="1.5" id="a_pitch" value="0.75"></div></div>
-<label>TESTAR VOZ</label><input id="a_testVoice" value="Salve, aqui é a Crowns Sports. Quem treina, reina.">
-<button class="btn-ghost" onclick="testVoiceAdm()">🔊 TESTAR VOZ AGORA</button>
 <label>FOTO DE FUNDO (LINK)</label><input id="a_bgImg" placeholder="Cole o link da foto ou use o botao abaixo">
 <button class="btn-ghost" onclick="document.getElementById('fileBg').click()">📷 ESCOLHER FOTO DO CELULAR</button>
 <img id="admPreview" class="adm-preview">
@@ -145,10 +138,8 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 <label>NOVA SENHA DO ADM</label><input id="a_newPass" placeholder="Deixe vazio para manter 132" inputmode="numeric">
 </div>
 <button class="btn-main" onclick="saveAdm()">💾 SALVAR TUDO</button>
-<button class="btn-ghost" onclick="testVoiceAdm()">🔊 TESTAR VOZ</button>
 <button class="btn-ghost" onclick="resetAdm()">↩️ VOLTAR AO PADRAO</button>
 <button class="btn-ghost" onclick="closeAdm()">FECHAR ADM</button>
-<p style="font-size:11px;color:#aaa;text-align:center;margin-top:10px">Salvo no celular. Quando você muda, muda pra quem abrir o site nesse celular. Para valer pra todo mundo, copie o link do site depois de salvar.</p>
 </div>
 </div>
 </div>
@@ -157,12 +148,11 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 let current=0, started=false, selectedPos="", musicPlaying=false, isMuted=false;
 let GROUP_LINK="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2";
 let CFG = JSON.parse(localStorage.getItem('crowns_cfg')||'{}');
-let DEFAULTS={siteName:"CROWNS",siteSub:"SPORTS",color:"#f1c65d",color2:"#f2c65d",bg:"#080808",group:GROUP_LINK,btnJoin:"QUERO ENTRAR",text1:"Nem todo mundo nasce rei. Alguns se tornam.",title2:"NAO E SO JOGO",text2:"E guerra pela coroa. Ranked, sala, campeonato. Quem treina, reina.",title3:"ONDE TUDO COMECA",text3:"Suor no treino. Foco na partida. Ninguem ve o comeco, todo mundo ve a coroa.",title4:"QUER VESTIR A COROA?",text4:"Vagas para Line Competitiva FREE FIRE - Suporte - Ruxador",voiceOn:1,rate:0.92,pitch:0.75,bgImg:"",musicUrl:"",pass:"132"};
+let DEFAULTS={siteName:"CROWNS",siteSub:"SPORTS",color:"#f1c65d",color2:"#f2c65d",bg:"#080808",group:GROUP_LINK,btnJoin:"QUERO ENTRAR",text1:"Nem todo mundo nasce rei. Alguns se tornam.",title2:"NAO E SO JOGO",text2:"E guerra pela coroa. Ranked, sala, campeonato. Quem treina, reina.",title3:"ONDE TUDO COMECA",text3:"Suor no treino. Foco na partida. Ninguem ve o comeco, todo mundo ve a coroa.",title4:"QUER VESTIR A COROA?",text4:"Vagas para Line Competitiva 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - Suporte - Ruxador",bgImg:"",musicUrl:"",pass:"132"};
 CFG={...DEFAULTS,...CFG};
-let voiceOn=CFG.voiceOn==1;
 const slides=document.querySelectorAll('.slide');
 const audio=document.getElementById('bgMusic');
-audio.volume=0.35;
+audio.volume=0.70;
 let timer=null;
 function applyCfg(){
   document.documentElement.style.setProperty('--gold',CFG.color);
@@ -182,26 +172,11 @@ function applyCfg(){
   document.getElementById('btnJoinText').textContent=CFG.btnJoin;
   GROUP_LINK=CFG.group;
   document.getElementById('groupLinkA').href=CFG.group;
-  voiceOn=CFG.voiceOn==1;
   if(CFG.bgImg){ document.getElementById('playerBg').style.backgroundImage="url('"+CFG.bgImg+"')"; }
   if(CFG.musicUrl && !audio.src){ audio.src=CFG.musicUrl; }
   updateMusicUI();
 }
-function getTexts(){ return [CFG.text1, CFG.title2+" . "+CFG.text2, CFG.title3+" . "+CFG.text3, CFG.title4+" . "+CFG.text4]; }
-function getNormalVoice(){
-  const voices=speechSynthesis.getVoices();
-  let v=voices.find(x=>x.lang==='pt-BR' && /Google|Daniel|Felipe/i.test(x.name));
-  if(!v) v=voices.find(x=>x.lang==='pt-BR');
-  if(!v) v=voices.find(x=>x.lang.startsWith('pt'));
-  return v;
-}
-function speak(text){
-  if(!voiceOn) return;
-  try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang='pt-BR'; u.rate=parseFloat(CFG.rate)||0.92; u.pitch=parseFloat(CFG.pitch)||0.75; u.volume=1; const v=getNormalVoice(); if(v) u.voice=v; speechSynthesis.speak(u); }catch(e){}
-}
-if('speechSynthesis' in window){ speechSynthesis.onvoiceschanged=()=>{}; }
-function updateMusicUI(){ document.getElementById('btnPlayMusic').textContent=musicPlaying?'⏸️':'▶️'; document.getElementById('btnMute').textContent=isMuted?'🔇':'🔊'; document.getElementById('btnVoice').textContent=voiceOn?'🎙️':'🔇🎙️'; }
-function toggleVoice(){ voiceOn=!voiceOn; CFG.voiceOn=voiceOn?1:0; localStorage.setItem('crowns_cfg',JSON.stringify(CFG)); if(!voiceOn) speechSynthesis.cancel(); else speak(getTexts()[current]); updateMusicUI(); }
+function updateMusicUI(){ document.getElementById('btnPlayMusic').textContent=musicPlaying?'⏸️':'▶️'; document.getElementById('btnMute').textContent=isMuted?'🔇':'🔊'; }
 function toggleMusic(){ if(!audio.src){ document.getElementById('fileMusic').click(); return; } if(!musicPlaying){ audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); } else{ audio.pause(); musicPlaying=false; updateMusicUI(); } }
 function tryPlayGitHub(){ if(CFG.musicUrl){ audio.src=CFG.musicUrl; audio.play().then(()=>{musicPlaying=true;document.getElementById('musicTitle').textContent='🎵 Musica do site';updateMusicUI();}); return; } audio.src='musica.mp3'; audio.play().then(()=>{ musicPlaying=true; document.getElementById('musicTitle').textContent='🎵 Musica do site'; updateMusicUI(); }).catch(()=>{ alert('Musica nao encontrada. Use ESCOLHER MUSICA'); document.getElementById('fileMusic').click(); }); }
 function changeVolume(v){ v=parseInt(v); document.getElementById('volLabel').textContent=v+'%'; audio.volume=v/100; if(v>0){isMuted=false; audio.muted=false;} updateMusicUI(); }
@@ -210,18 +185,17 @@ function volumeDown(){ let s=document.getElementById('volSlider'); s.value=Math.
 function toggleMute(){ isMuted=!isMuted; audio.muted=isMuted; updateMusicUI(); }
 function loadMyMusic(input){ const file=input.files[0]; if(!file) return; audio.src=URL.createObjectURL(file); document.getElementById('musicTitle').textContent='🎵 '+file.name; audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); }
 function loadBgFile(input){ const f=input.files[0]; if(!f) return; const r=new FileReader(); r.onload=e=>{ CFG.bgImg=e.target.result; document.getElementById('playerBg').style.backgroundImage="url('"+CFG.bgImg+"')"; document.getElementById('admPreview').src=CFG.bgImg; document.getElementById('admPreview').style.display='block'; }; r.readAsDataURL(f); }
-function show(n){ current=(n+slides.length)%slides.length; slides.forEach((s,i)=>s.classList.toggle('active',i===current)); speak(getTexts()[current]); }
-function autoPlay(){ clearInterval(timer); timer=setInterval(()=>{ if(started && !document.getElementById('joinPage').classList.contains('active')){ if(current<slides.length-1) show(current+1); else { clearInterval(timer); speechSynthesis.cancel(); } } }, 6500); }
+function show(n){ current=(n+slides.length)%slides.length; slides.forEach((s,i)=>s.classList.toggle('active',i===current)); }
+function autoPlay(){ clearInterval(timer); timer=setInterval(()=>{ if(started && !document.getElementById('joinPage').classList.contains('active')){ if(current<slides.length-1) show(current+1); else clearInterval(timer); } }, 5000); }
 function startTrailer(){ if(!audio.src && !CFG.musicUrl){ alert('Escolha a musica primeiro'); document.getElementById('fileMusic').click(); return; } document.getElementById('startScreen').classList.add('hidden'); started=true; if(CFG.musicUrl && !audio.src) audio.src=CFG.musicUrl; if(!musicPlaying) audio.play().then(()=>{musicPlaying=true;updateMusicUI();}).catch(()=>{}); show(0); autoPlay(); }
 function prevBtn(){ show(current-1); }
 function nextBtn(){ show(current+1); }
-function openJoin(){ speechSynthesis.cancel(); document.getElementById('joinPage').classList.add('active'); }
+function openJoin(){ document.getElementById('joinPage').classList.add('active'); }
 function closeJoin(){ document.getElementById('joinPage').classList.remove('active'); }
 function replayTrailer(){ closeJoin(); show(0); autoPlay(); }
 function selectPos(btn,pos){ selectedPos=pos; document.querySelectorAll('.pos-btn').forEach(b=>b.classList.remove('selected')); btn.classList.add('selected'); document.getElementById('posEscolhida').textContent="Sua posicao: "+pos; }
 function goToGroup(){ const nick=document.getElementById('nick').value.trim(); if(!selectedPos){ alert('Escolhe sua posicao primeiro'); return; } if(!nick){ alert('Coloca seu nick primeiro'); return; } window.open(GROUP_LINK,'_blank'); }
 function copyLink(){ navigator.clipboard.writeText(GROUP_LINK).then(()=>alert('Link copiado!')); }
-// ADM
 function openAdm(){ document.getElementById('admModal').classList.add('open'); document.getElementById('admLogin').style.display='block'; document.getElementById('admPanel').style.display='none'; }
 function closeAdm(){ document.getElementById('admModal').classList.remove('open'); }
 function checkAdm(){ const p=document.getElementById('admPass').value; if(p===String(CFG.pass)){ document.getElementById('admLogin').style.display='none'; document.getElementById('admPanel').style.display='block'; fillAdm(); } else { alert('Senha errada!'); } }
@@ -241,18 +215,9 @@ function fillAdm(){
   document.getElementById('a_text3').value=CFG.text3;
   document.getElementById('a_title4').value=CFG.title4;
   document.getElementById('a_text4').value=CFG.text4;
-  document.getElementById('a_voiceOn').value=CFG.voiceOn;
-  document.getElementById('a_rate').value=CFG.rate;
-  document.getElementById('a_pitch').value=CFG.pitch;
   document.getElementById('a_bgImg').value=CFG.bgImg.startsWith('data:')?'':CFG.bgImg;
   document.getElementById('a_musicUrl').value=CFG.musicUrl;
   if(CFG.bgImg){ document.getElementById('admPreview').src=CFG.bgImg; document.getElementById('admPreview').style.display='block'; }
-}
-function testVoiceAdm(){
-  const txt=document.getElementById('a_testVoice')?.value || "Teste de voz";
-  const oldRate=CFG.rate, oldPitch=CFG.pitch;
-  CFG.rate=document.getElementById('a_rate').value; CFG.pitch=document.getElementById('a_pitch').value;
-  let wasOn=voiceOn; voiceOn=true; speak(txt); voiceOn=wasOn; CFG.rate=oldRate; CFG.pitch=oldPitch;
 }
 function saveAdm(){
   CFG.siteName=document.getElementById('a_siteName').value||"CROWNS";
@@ -269,9 +234,6 @@ function saveAdm(){
   CFG.text3=document.getElementById('a_text3').value;
   CFG.title4=document.getElementById('a_title4').value;
   CFG.text4=document.getElementById('a_text4').value;
-  CFG.voiceOn=document.getElementById('a_voiceOn').value;
-  CFG.rate=document.getElementById('a_rate').value;
-  CFG.pitch=document.getElementById('a_pitch').value;
   const linkBg=document.getElementById('a_bgImg').value.trim();
   if(linkBg) CFG.bgImg=linkBg;
   CFG.musicUrl=document.getElementById('a_musicUrl').value.trim();
@@ -279,7 +241,7 @@ function saveAdm(){
   if(np) CFG.pass=np;
   localStorage.setItem('crowns_cfg',JSON.stringify(CFG));
   applyCfg();
-  alert('Salvo! ✅ Já mudou pra todo mundo que abrir nesse celular.');
+  alert('Salvo! ✅');
   closeAdm();
 }
 function resetAdm(){ if(confirm('Voltar tudo ao padrao?')){ localStorage.removeItem('crowns_cfg'); location.reload(); } }
