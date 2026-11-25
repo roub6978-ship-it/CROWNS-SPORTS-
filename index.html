@@ -57,91 +57,28 @@ footer{position:absolute;z-index:4;bottom:2%;left:7%;right:7%;display:flex;justi
 <div class="player">
 <div class="shade"></div>
 <header>CROWNS - SPORTS</header>
-<div class="controls">
-<button onclick="prevBtn()">◀</button>
-<button onclick="nextBtn()">▶</button>
-</div>
+<div class="controls"><button onclick="prevBtn()">◀</button><button onclick="nextBtn()">▶</button></div>
 <div class="text">
-<div class="slide active">
-<div class="crown">👑</div><div class="kicker">APRESENTA</div>
-<h1>CROWNS<small>SPORTS</small></h1><div class="rule"></div>
-<p>Nem todo mundo nasce rei.<br><span class="gold">Alguns se tornam.</span></p>
-</div>
-<div class="slide">
-<div class="kicker"> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - COMPETITIVO</div>
-<h2>NAO E SO<br>JOGO</h2>
-<p>E <span class="gold">guerra pela coroa.</span><br>Ranked, sala, campeonato.<br>Quem treina, reina.</p>
-<div style="margin-top:12px"><span class="pill">4X4</span> <span class="pill">CAMPEONATO</span> <span class="pill">LINE</span></div>
-</div>
-<div class="slide">
-<div class="kicker">DISCIPLINA - RACA - RESPEITO</div>
-<h2>ONDE TUDO<br>COMECA</h2>
-<p>Suor no treino.<br>Foco na partida.<br>Ninguem ve o comeco,<br>todo mundo ve a <span class="gold">coroa.</span></p>
-</div>
-<div class="slide">
-<div class="crown">👑</div><div class="kicker">RECRUTAMENTO ABERTO</div>
-<div class="final">QUER VESTIR<br>A COROA?</div><div class="rule"></div>
-<p>Vagas para Line Competitiva<br> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - Suporte - Ruxador</p>
-<button class="btn-main" onclick="openJoin()">QUERO ENTRAR</button>
-<button class="btn-ghost" onclick="replayTrailer()">VER DE NOVO</button>
-</div>
+<div class="slide active"><div class="crown">👑</div><div class="kicker">APRESENTA</div><h1>CROWNS<small>SPORTS</small></h1><div class="rule"></div><p>Nem todo mundo nasce rei.<br><span class="gold">Alguns se tornam.</span></p></div>
+<div class="slide"><div class="kicker"> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - COMPETITIVO</div><h2>NAO E SO<br>JOGO</h2><p>E <span class="gold">guerra pela coroa.</span><br>Ranked, sala, campeonato.<br>Quem treina, reina.</p><div style="margin-top:12px"><span class="pill">4X4</span> <span class="pill">CAMPEONATO</span> <span class="pill">LINE</span></div></div>
+<div class="slide"><div class="kicker">DISCIPLINA - RACA - RESPEITO</div><h2>ONDE TUDO<br>COMECA</h2><p>Suor no treino.<br>Foco na partida.<br>Ninguem ve o comeco,<br>todo mundo ve a <span class="gold">coroa.</span></p></div>
+<div class="slide"><div class="crown">👑</div><div class="kicker">RECRUTAMENTO ABERTO</div><div class="final">QUER VESTIR<br>A COROA?</div><div class="rule"></div><p>Vagas para Line Competitiva<br> 【entity-FREE FIRE¦canonical_name=FREE FIRE】 - Suporte - Ruxador</p><button class="btn-main" onclick="openJoin()">QUERO ENTRAR</button><button class="btn-ghost" onclick="replayTrailer()">VER DE NOVO</button></div>
 </div>
 <div class="music-bar">
-  <div class="music-top">
-    <div class="music-title" id="musicTitle">Sem musica - escolha abaixo</div>
-    <div class="music-btns">
-      <button onclick="toggleMusic()" id="btnPlayMusic">▶️</button>
-      <button onclick="toggleMute()" id="btnMute">🔊</button>
-    </div>
-  </div>
-  <div class="music-vol">
-    <span onclick="volumeDown()" style="cursor:pointer">🔉</span>
-    <input type="range" id="volSlider" min="0" max="100" value="70" oninput="changeVolume(this.value)">
-    <span onclick="volumeUp()" style="cursor:pointer">🔊</span>
-    <span id="volLabel" style="color:#ffd36d;font-weight:900;min-width:38px">70%</span>
-  </div>
-  <div class="music-change">
-    <button onclick="document.getElementById('fileMusic').click()">📂 ESCOLHER MUSICA</button>
-    <button onclick="tryPlayGitHub()">▶️ MUSICA DO SITE</button>
-    <button onclick="window.open('https://www.flowmusic.app/song/353a2bc3-a792-4d5c-9c44-88a6bcb7fb61','_blank')">FLOWMUSIC</button>
-  </div>
+  <div class="music-top"><div class="music-title" id="musicTitle">Sem musica - escolha abaixo</div><div class="music-btns"><button onclick="toggleMusic()" id="btnPlayMusic">▶️</button><button onclick="toggleMute()" id="btnMute">🔊</button></div></div>
+  <div class="music-vol"><span onclick="volumeDown()" style="cursor:pointer">🔉</span><input type="range" id="volSlider" min="0" max="100" value="70" oninput="changeVolume(this.value)"><span onclick="volumeUp()" style="cursor:pointer">🔊</span><span id="volLabel" style="color:#ffd36d;font-weight:900;min-width:38px">70%</span></div>
+  <div class="music-change"><button onclick="document.getElementById('fileMusic').click()">📂 ESCOLHER MUSICA</button><button onclick="tryPlayGitHub()">▶️ MUSICA DO SITE</button><button onclick="window.open('https://www.flowmusic.app/song/353a2bc3-a792-4d5c-9c44-88a6bcb7fb61','_blank')">FLOWMUSIC</button></div>
 </div>
 <footer><span>CROWNS-SPORTS</span><span>2026</span></footer>
 <div class="join-page" id="joinPage">
-<div style="font-size:60px">👑</div>
-<h2>BORA REINAR<br>COM A GENTE?</h2>
-<div class="join-box">
-<label>SEU NICK NO FREE FIRE</label>
-<input id="nick" placeholder="Ex: A05 Matador" />
-<label style="display:block;margin-top:16px">QUAL SUA POSICAO?</label>
-<div style="margin-top:10px;text-align:center">
-<button class="pos-btn" onclick="selectPos(this,'Ruxador')">Ruxador</button>
-<button class="pos-btn" onclick="selectPos(this,'Suporte')">Suporte</button>
-<button class="pos-btn" onclick="selectPos(this,'Sniper')">Sniper</button>
-<button class="pos-btn" onclick="selectPos(this,'Granadeiro')">Granadeiro</button>
-<button class="pos-btn" onclick="selectPos(this,'Coach')">Coach</button>
-</div>
-<p id="posEscolhida" style="font-size:13px;color:#ffd36d;text-align:center;margin-top:10px">Escolha sua posicao</p>
-</div>
-<div class="join-box">
-<label>LINK DO GRUPO OFICIAL</label>
-<a href="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2" target="_blank" style="text-decoration:none"><div class="link-box">CLIQUE AQUI PARA ENTRAR NO GRUPO</div></a>
-<button class="btn-main" onclick="goToGroup()">ENTRAR NO GRUPO DO WHATSAPP</button>
-<button class="btn-ghost" onclick="copyLink()">COPIAR LINK</button>
-</div>
+<div style="font-size:60px">👑</div><h2>BORA REINAR<br>COM A GENTE?</h2>
+<div class="join-box"><label>SEU NICK NO 【entity-FREE FIRE¦canonical_name=FREE FIRE】</label><input id="nick" placeholder="Ex: A05 Matador" /><label style="display:block;margin-top:16px">QUAL SUA POSICAO?</label><div style="margin-top:10px;text-align:center"><button class="pos-btn" onclick="selectPos(this,'Ruxador')">Ruxador</button><button class="pos-btn" onclick="selectPos(this,'Suporte')">Suporte</button><button class="pos-btn" onclick="selectPos(this,'Sniper')">Sniper</button><button class="pos-btn" onclick="selectPos(this,'Granadeiro')">Granadeiro</button><button class="pos-btn" onclick="selectPos(this,'Coach')">Coach</button></div><p id="posEscolhida" style="font-size:13px;color:#ffd36d;text-align:center;margin-top:10px">Escolha sua posicao</p></div>
+<div class="join-box"><label>LINK DO GRUPO OFICIAL</label><a href="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2" target="_blank" style="text-decoration:none"><div class="link-box">CLIQUE AQUI PARA ENTRAR NO GRUPO</div></a><button class="btn-main" onclick="goToGroup()">ENTRAR NO GRUPO DO WHATSAPP</button><button class="btn-ghost" onclick="copyLink()">COPIAR LINK</button></div>
 <button class="btn-ghost" onclick="closeJoin()">VOLTAR PARA O TRAILER</button>
 </div>
 </div>
 <input type="file" id="fileMusic" accept="audio/*" onchange="loadMyMusic(this)">
-<div id="startScreen">
-<div class="start-inner">
-<div class="badge">SEM VOZ - SO MUSICA</div>
-<div style="font-size:90px;margin:14px 0">👑</div>
-<h1 style="font-size:52px">CROWNS<br><small>SPORTS</small></h1>
-<button class="btn-main" onclick="document.getElementById('fileMusic').click()">📂 1. ESCOLHER MUSICA</button>
-<button class="btn-main" onclick="startTrailer()" style="background:#fff!important">▶️ 2. INICIAR SEM VOZ</button>
-</div>
-</div>
+<div id="startScreen"><div class="start-inner"><div class="badge">SEM VOZ - SO MUSICA</div><div style="font-size:90px;margin:14px 0">👑</div><h1 style="font-size:52px">CROWNS<br><small>SPORTS</small></h1><button class="btn-main" onclick="document.getElementById('fileMusic').click()">📂 1. ESCOLHER MUSICA</button><button class="btn-main" onclick="startTrailer()" style="background:#fff!important">▶️ 2. INICIAR SEM VOZ</button></div></div>
 <script>
 let current=0, started=false, selectedPos="", musicPlaying=false, isMuted=false;
 const slides=document.querySelectorAll('.slide');
@@ -149,44 +86,17 @@ const GROUP_LINK="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=
 const audio=document.getElementById('bgMusic');
 audio.volume=0.70;
 let timer=null;
-function updateMusicUI(){
-  document.getElementById('btnPlayMusic').textContent=musicPlaying?'⏸️':'▶️';
-  document.getElementById('btnMute').textContent=isMuted?'🔇':'🔊';
-}
-function toggleMusic(){
-  if(!audio.src){ document.getElementById('fileMusic').click(); return; }
-  if(!musicPlaying){ audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); }
-  else{ audio.pause(); musicPlaying=false; updateMusicUI(); }
-}
-function tryPlayGitHub(){
-  audio.src='musica.mp3';
-  audio.play().then(()=>{ musicPlaying=true; document.getElementById('musicTitle').textContent='🎵 Musica do site'; updateMusicUI(); }).catch(()=>{ alert('Musica do site nao encontrada. Use ESCOLHER MUSICA e pegue o mp3 do FlowMusic'); document.getElementById('fileMusic').click(); });
-}
+function updateMusicUI(){ document.getElementById('btnPlayMusic').textContent=musicPlaying?'⏸️':'▶️'; document.getElementById('btnMute').textContent=isMuted?'🔇':'🔊'; }
+function toggleMusic(){ if(!audio.src){ document.getElementById('fileMusic').click(); return; } if(!musicPlaying){ audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); } else{ audio.pause(); musicPlaying=false; updateMusicUI(); } }
+function tryPlayGitHub(){ audio.src='musica.mp3'; audio.play().then(()=>{ musicPlaying=true; document.getElementById('musicTitle').textContent='🎵 Musica do site'; updateMusicUI(); }).catch(()=>{ alert('Musica do site nao encontrada. Use ESCOLHER MUSICA e pegue o mp3 do FlowMusic'); document.getElementById('fileMusic').click(); }); }
 function changeVolume(v){ v=parseInt(v); document.getElementById('volLabel').textContent=v+'%'; audio.volume=v/100; if(v>0){isMuted=false; audio.muted=false;} updateMusicUI(); }
 function volumeUp(){ let s=document.getElementById('volSlider'); s.value=Math.min(100,parseInt(s.value)+10); changeVolume(s.value); }
 function volumeDown(){ let s=document.getElementById('volSlider'); s.value=Math.max(0,parseInt(s.value)-10); changeVolume(s.value); }
 function toggleMute(){ isMuted=!isMuted; audio.muted=isMuted; updateMusicUI(); }
-function loadMyMusic(input){
-  const file=input.files[0]; if(!file) return;
-  audio.src=URL.createObjectURL(file);
-  document.getElementById('musicTitle').textContent='🎵 '+file.name;
-  audio.play().then(()=>{musicPlaying=true;updateMusicUI();});
-}
-function show(n){
-  current=(n+slides.length)%slides.length;
-  slides.forEach((s,i)=>s.classList.toggle('active',i===current));
-}
-function autoPlay(){
-  clearInterval(timer);
-  timer=setInterval(()=>{ if(started && !document.getElementById('joinPage').classList.contains('active')){ if(current<slides.length-1) show(current+1); else clearInterval(timer); } }, 5000);
-}
-function startTrailer(){
-  if(!audio.src){ alert('Escolha a musica primeiro'); document.getElementById('fileMusic').click(); return; }
-  document.getElementById('startScreen').classList.add('hidden');
-  started=true;
-  if(!musicPlaying) audio.play().then(()=>{musicPlaying=true;updateMusicUI();});
-  show(0); autoPlay();
-}
+function loadMyMusic(input){ const file=input.files[0]; if(!file) return; audio.src=URL.createObjectURL(file); document.getElementById('musicTitle').textContent='🎵 '+file.name; audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); }
+function show(n){ current=(n+slides.length)%slides.length; slides.forEach((s,i)=>s.classList.toggle('active',i===current)); }
+function autoPlay(){ clearInterval(timer); timer=setInterval(()=>{ if(started && !document.getElementById('joinPage').classList.contains('active')){ if(current<slides.length-1) show(current+1); else clearInterval(timer); } }, 5000); }
+function startTrailer(){ if(!audio.src){ alert('Escolha a musica primeiro'); document.getElementById('fileMusic').click(); return; } document.getElementById('startScreen').classList.add('hidden'); started=true; if(!musicPlaying) audio.play().then(()=>{musicPlaying=true;updateMusicUI();}); show(0); autoPlay(); }
 function prevBtn(){ show(current-1); }
 function nextBtn(){ show(current+1); }
 function openJoin(){ document.getElementById('joinPage').classList.add('active'); }
