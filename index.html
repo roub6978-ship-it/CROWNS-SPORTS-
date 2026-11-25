@@ -2,470 +2,181 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Banco Roxo — Simulação</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CROWNS-SPORTS | Narração Estilo NFA</title>
 <style>
-:root{
-  --purple:#8500d5;
-  --ink:#e8e8e8;
-  --muted:#aaa;
-  --bg:#121212;
-  --card:#1e1e1e;
-  --soft:#2a2a2a;
-}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
-.top{background:linear-gradient(135deg,#9700dc,#7100c8);padding:18px 20px 30px;color:white}
-.topbar{display:flex;align-items:center;justify-content:space-between;max-width:760px;margin:auto}
-.avatar{width:44px;height:44px;border-radius:50%;background:#ffffff35;display:grid;place-items:center;font-size:20px;overflow:hidden;flex-shrink:0}
-.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.profile-name{color:white;font-size:14px;font-weight:bold;margin-left:10px}
-.demo{display:inline-block;margin-top:12px;padding:5px 9px;border:1px solid #ffffffa0;border-radius:20px;font-size:10px;letter-spacing:1px}
-.bill{max-width:760px;margin:30px auto 0;background:#2a1a3a;color:#d4b8f0;border-radius:20px;padding:18px 20px;display:flex;align-items:center;gap:14px;font-weight:700}
-main{max-width:760px;margin:0 auto;padding:20px 20px 50px}
-.balancebox{padding:10px 0 20px;display:flex;justify-content:space-between;align-items:center}
-.small{font-size:14px;color:var(--muted)}
-.balance{font-size:32px;font-weight:800;margin-top:6px;color:#fff}
-.chev{font-size:28px;color:#777}
-.actions{display:flex;gap:14px;overflow-x:auto;padding:10px 0 20px;scrollbar-width:none}
-.actions::-webkit-scrollbar{display:none}
-.action{flex:0 0 95px;text-align:center;font-size:13px;font-weight:700;line-height:1.3;color:#ddd;cursor:pointer}
-.action.active .circle{background:#8500d5;color:#fff}
-.circle{width:78px;height:78px;border-radius:50%;background:var(--soft);margin:0 auto 10px;display:grid;place-items:center;font-size:18px;color:#ddd;transition:.2s;font-weight:700}
-
-.tab-content{display:none}
-.tab-content.active{display:block}
-
-.panel{background:var(--card);border:1px solid #333;border-radius:16px;padding:20px;margin-top:10px}
-label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin:14px 0 6px}
-input{width:100%;padding:13px;border:1px solid #444;border-radius:10px;font-size:16px;background:#2a2a2a;color:#fff}
-button{background:#8500d5;color:white;border:0;border-radius:10px;padding:14px 16px;font-weight:700;font-size:15px;margin-top:16px;cursor:pointer;width:100%}
-button.light{background:#3d2a55;color:#d4b8f0}
-.note{background:#3a2a10;border:1px solid #6b4e1a;border-radius:12px;padding:12px;font-size:12px;line-height:1.4;color:#e8c87a;margin-top:20px}
-#msg,#payMsg,#profileMsg{font-size:13px;color:#c77dff;margin-top:12px;min-height:18px}
-.historyitem{display:flex;justify-content:space-between;border-bottom:1px solid #333;padding:12px 0;font-size:13px;gap:10px}
-.historyitem:last-child{border:0}
-.section-title{font-size:20px;margin:0 0 16px;color:#fff}
-.cpf-box{background:#2a2a2a;border-radius:12px;padding:18px;text-align:center;margin-top:10px}
-.cpf-box b{font-size:20px;color:#c77dff;letter-spacing:1px}
-
-#welcome{
- position:fixed;inset:0;background:linear-gradient(135deg,#9700dc,#7100c8);
- z-index:9999;display:flex;align-items:center;justify-content:center;padding:22px;
-}
-.welcome-card{
- background:#1e1e1e;border-radius:22px;padding:25px;width:100%;max-width:390px;color:#eee;
-}
-.welcome-card h2{color:#c77dff;margin-top:0}
-#photoStep{display:none}
-.welcome-card button{width:100%}
-.welcome-card input{background:#2a2a2a;color:#fff;border-color:#444}
+html,body{margin:0;width:100%;height:100%;background:#050505;color:white;font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+body{display:grid;place-items:center}
+.player{position:relative;width:min(100vw,56.25vh);height:min(177.78vw,100vh);aspect-ratio:9/16;overflow:hidden;background:#080808}
+.bg{position:absolute;inset:-8%;opacity:0;transform:scale(1.14);transition:opacity 1s ease;animation:drift 9s ease-in-out infinite alternate}
+.bg.active{opacity:1}
+@keyframes drift{from{transform:scale(1.12) translate3d(-1%,0,0)}to{transform:scale(1.28) translate3d(1%,-1%,0)}}
+.bg svg{width:100%;height:100%;display:block}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,#03030377 0%,#03030333 35%,#030303aa 72%,#030303ee 100%);z-index:1;pointer-events:none}
+header{position:absolute;z-index:4;top:4%;width:100%;text-align:center;font-size:10px;letter-spacing:.36em;color:#f1ce7b;pointer-events:none}
+.text{position:absolute;z-index:3;inset:12% 7% 20%;display:grid;place-items:center;text-align:center;pointer-events:none}
+.slide{position:absolute;width:100%;padding:5%;opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s;pointer-events:none;visibility:hidden}
+.slide.active{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible;z-index:5}
+.slide button{pointer-events:auto !important;position:relative;z-index:10}
+.kicker{font-size:clamp(10px,2.6vw,14px);letter-spacing:.35em;color:#f2c65d;margin-bottom:7%}
+h1{font-size:clamp(38px,11vw,70px);line-height:.9;margin:0;text-shadow:0 3px 22px #000,0 0 20px #d69c38}
+h1 small{display:block;font-size:.38em;letter-spacing:.42em;color:#f3c45c;margin-top:14px}
+h2{font-size:clamp(28px,7.5vw,46px);line-height:1.05;color:#ffe5a0;margin:0 0 7%}
+p{font-size:clamp(17px,4.5vw,25px);line-height:1.42;margin:0}
+.gold{color:#ffd36d;font-weight:900}
+.crown{font-size:clamp(70px,18vw,115px);color:#f6ca62;text-shadow:0 0 30px #f3bd4b;margin-bottom:4%;animation:float 2.5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.rule{height:2px;width:44%;margin:7% auto;background:linear-gradient(90deg,transparent,#f5c85d,transparent)}
+.final{font-size:clamp(23px,6.2vw,38px);font-weight:900;line-height:1.25;color:#ffe29a}
+footer{position:absolute;z-index:4;bottom:5%;left:7%;right:7%;display:flex;justify-content:space-between;color:#f1d38b;font-size:10px;letter-spacing:.2em;pointer-events:none}
+.progress{position:absolute;z-index:5;bottom:0;left:0;height:4px;background:#f1c65d;width:0;pointer-events:none}
+.controls{position:absolute;z-index:30;top:8%;right:4%;display:flex;gap:6px}
+button{border:1px solid #c59b42;background:#090909c9;color:#ffe3a0;padding:9px 12px;border-radius:20px;font-weight:bold;font-size:10px;cursor:pointer;pointer-events:auto}
+.btn-main{background:#f1c65d !important;color:#000 !important;padding:16px 24px;border-radius:30px;font-size:15px;width:100%;margin-top:8%;display:block;box-shadow:0 0 25px #f1c65d88}
+.btn-ghost{background:#111 !important;color:#ffe3a0;padding:12px 18px;border-radius:30px;font-size:12px;width:100%;margin-top:8px;display:block}
+.start-screen{position:absolute;inset:0;z-index:50;background:radial-gradient(circle at 50% 30%,#2a1e05,#050505 70%);display:grid;place-items:center;text-align:center;padding:10%}
+.start-screen.hidden{display:none}
+.badge{font-size:10px;letter-spacing:.3em;color:#f1ce7b;border:1px solid #f1ce7b;padding:8px 14px;border-radius:20px}
+.pill{display:inline-block;background:#1a1200;border:1px solid #f5c85d;color:#ffd36d;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:900;margin:3px}
+.join-page{position:absolute;inset:0;z-index:40;background:linear-gradient(180deg,#1a1200,#050505 70%);display:none;overflow-y:auto;padding:16% 8% 10%;text-align:center}
+.join-page.active{display:block}
+.join-box{background:#0f0f0f;border:1px solid #f5c85d;border-radius:18px;padding:16px;margin-top:14px;text-align:left}
+.join-box input{width:100%;margin-top:8px;padding:13px;border-radius:12px;border:1px solid #333;background:#000;color:#fff;font-size:15px}
+.pos-btn{border:1px solid #444;background:#111;color:#fff;padding:10px 14px;border-radius:20px;font-size:12px;font-weight:bold;margin:4px}
+.pos-btn.selected{background:#f1c65d !important;color:#000 !important}
+.link-box{background:#000;border:1px dashed #f5c85d;border-radius:12px;padding:12px;margin-top:12px;word-break:break-all;font-size:13px;color:#ffd36d}
+.narra-box{position:absolute;z-index:6;left:7%;right:7%;bottom:9%;background:#000000b8;border:1px solid #f5c85d66;border-radius:14px;padding:10px 12px;text-align:center;pointer-events:none}
+.narra-box small{font-size:10px;letter-spacing:.25em;color:#f1ce7b}
+.narra-box p{font-size:14px;line-height:1.35;color:#ffe9b0;margin-top:4px}
 </style>
 </head>
 <body>
+<div class="player">
+  <div class="bg active"><svg viewBox="0 0 400 700" preserveAspectRatio="xMidYMid slice"><rect width="400" height="700" fill="#14100a"/></svg></div>
+  <div class="bg"><svg viewBox="0 0 400 700" preserveAspectRatio="xMidYMid slice"><rect width="400" height="700" fill="#0a0a0a"/></svg></div>
+  <div class="bg"><svg viewBox="0 0 400 700" preserveAspectRatio="xMidYMid slice"><rect width="400" height="700" fill="#080808"/></svg></div>
+  <div class="bg"><svg viewBox="0 0 400 700" preserveAspectRatio="xMidYMid slice"><rect width="400" height="700" fill="#050505"/></svg></div>
+  <div class="shade"></div>
+  <header>CROWNS — SPORTS</header>
+  <div class="controls">
+    <button type="button" id="btnNarra">🎙️ NARRAÇÃO: ON</button>
+    <button type="button" id="btnPrev">◀</button>
+    <button type="button" id="btnNext">▶</button>
+  </div>
+  <div class="text">
+    <div class="slide active">
+      <div class="crown">👑</div><div class="kicker">APRESENTA</div>
+      <h1>CROWNS<small>SPORTS</small></h1><div class="rule"></div>
+      <p>Nem todo mundo nasce rei.<br><span class="gold">Alguns se tornam.</span></p>
+    </div>
+    <div class="slide">
+      <div class="kicker">【entity-FREE FIRE¦canonical_name=Free Fire】 • COMPETITIVO</div>
+      <h2>NÃO É SÓ<br>JOGO</h2>
+      <p>É <span class="gold">guerra pela coroa.</span><br>Ranked, sala, campeonato.<br>Quem treina, reina.</p>
+      <div style="margin-top:10%"><span class="pill">🔥 4X4</span> <span class="pill">🏆 CAMPEONATO</span> <span class="pill">👑 LINE</span></div>
+    </div>
+    <div class="slide">
+      <div class="kicker">DISCIPLINA • RAÇA • RESPEITO</div>
+      <h2>ONDE TUDO<br>COMEÇA</h2>
+      <p>Suor no treino.<br>Foco na partida.<br>Ninguém vê o começo,<br>todo mundo vê a <span class="gold">coroa.</span></p>
+    </div>
+    <div class="slide">
+      <div class="crown">👑</div><div class="kicker">🔥 RECRUTAMENTO ABERTO 🔥</div>
+      <div class="final">QUER VESTIR<br>A COROA?</div><div class="rule"></div>
+      <p>Vagas para Line Competitiva<br>【entity-Free Fire¦canonical_name=Free Fire】 • Suporte • Ruxador</p>
+      <button type="button" class="btn-main" id="btnQueroEntrar">👑 QUERO ENTRAR 👑</button>
+      <button type="button" class="btn-ghost" id="btnReplay">↻ VER DE NOVO</button>
+    </div>
+  </div>
+  <div class="narra-box"><small>🎙️ NARRAÇÃO ESTILO NFA • EMOCIONANTE</small><p id="narraText">Aperte INICIAR TRAILER para ouvir...</p></div>
+  <footer><span>CROWNS-SPORTS</span><span>2026 • TRAILER</span></footer>
+  <div class="progress" id="progress"></div>
 
-<div id="welcome">
- <div class="welcome-card">
-  <div id="nameStep">
-   <h2>Bem-vindo ao Banco Roxo!</h2>
-   <p>Configure seu perfil de demonstração.</p>
-   <label>Adicione seu nome de usuário</label>
-   <input id="userName" type="text" maxlength="30" placeholder="Seu nome">
-   <label>Saldo inicial (somente números)</label>
-   <input id="initialBalance" type="number" min="0" step="0.01" placeholder="500">
-   <button onclick="confirmProfile()">Confirmar</button>
+  <div class="join-page" id="joinPage">
+    <div style="font-size:60px">👑</div>
+    <h2>BORA REINAR<br>COM A GENTE?</h2>
+    <div class="join-box">
+      <label>SEU NICK NO 【entity-FREE FIRE¦canonical_name=Free Fire】</label>
+      <input id="nick" placeholder="Ex: A05 • Matador" />
+      <label style="display:block;margin-top:16px">QUAL SUA POSIÇÃO?</label>
+      <div style="margin-top:10px;text-align:center">
+        <button type="button" class="pos-btn" data-pos="Ruxador">🔥 Ruxador</button>
+        <button type="button" class="pos-btn" data-pos="Suporte">🛡️ Suporte</button>
+        <button type="button" class="pos-btn" data-pos="Sniper">🎯 Sniper</button>
+        <button type="button" class="pos-btn" data-pos="Granadeiro">💣 Granadeiro</button>
+        <button type="button" class="pos-btn" data-pos="Coach / Outro">👑 Coach / Outro</button>
+      </div>
+      <p id="posEscolhida" style="font-size:13px;color:#ffd36d;text-align:center;margin-top:10px">Escolha sua posição acima 👆</p>
+    </div>
+    <div class="join-box">
+      <label>🔗 LINK DO GRUPO OFICIAL</label>
+      <a href="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2" target="_blank" style="text-decoration:none"><div class="link-box">https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2<br><b style="color:#fff">👉 CLIQUE AQUI PARA ENTRAR 👈</b></div></a>
+      <button type="button" class="btn-main" id="btnGoGroup">ENTRAR NO GRUPO DO WHATSAPP →</button>
+      <button type="button" class="btn-ghost" id="btnCopy">📋 COPIAR LINK</button>
+    </div>
+    <button type="button" class="btn-ghost" id="btnBack">← VOLTAR PARA O TRAILER</button>
   </div>
-  <div id="photoStep">
-   <h2>Escolha sua foto</h2>
-   <p>Selecione uma imagem da galeria.</p>
-   <input id="profilePhoto" type="file" accept="image/*">
-   <button onclick="finishProfile()">Continuar</button>
-   <button class="light" onclick="finishProfile()">Pular por enquanto</button>
+
+  <div class="start-screen" id="startScreen">
+    <div>
+      <div class="badge">TRAILER COM NARRAÇÃO ESTILO NFA</div>
+      <div style="font-size:90px;margin:14px 0">👑</div>
+      <h1 style="font-size:44px">CROWNS<br><small>SPORTS</small></h1>
+      <p style="margin-top:14px;font-size:16px">Narração emocionante, estilo narrador de campeonato.<br>Link do grupo no final.</p>
+      <button type="button" class="btn-main" id="btnStart">▶ INICIAR TRAILER COM VOZ</button>
+      <button type="button" class="btn-ghost" id="btnTestVoice">🎙️ TESTAR VOZ ESTILO NFA</button>
+      <p style="font-size:11px;color:#aaa;margin-top:12px">A voz é gerada pelo navegador no estilo narrador esportivo. Não é a voz do Radão, é uma voz de IA inspirada no estilo dele.</p>
+    </div>
   </div>
- </div>
 </div>
-
-<header class="top">
- <div class="topbar">
-  <div style="display:flex;align-items:center">
-   <div class="avatar" id="avatar">R</div>
-   <span class="profile-name" id="displayName"></span>
-  </div>
-  <div style="font-size:22px">•</div>
- </div>
- <div style="max-width:760px;margin:auto">
-  <div class="demo">APP FICTÍCIO • MODO DEMONSTRAÇÃO</div>
- </div>
- <div class="bill">
-  <span style="font-size:20px">■</span>
-  <span>Seu lembrete de brincadeira</span>
-  <span style="margin-left:auto">⋮</span>
- </div>
-</header>
-
-<main>
- <section class="balancebox">
-  <div>
-   <div class="small">Saldo em conta (fictício)</div>
-   <div class="balance" id="balance">R$ 500,00</div>
-  </div>
-  <div class="chev">›</div>
- </section>
-
- <nav class="actions">
-  <div class="action active" onclick="abrirAba('inicio', this)">
-    <div class="circle">In</div>Início
-  </div>
-  <div class="action" onclick="abrirAba('pix', this)">
-    <div class="circle">Pix</div>Área Pix
-  </div>
-  <div class="action" onclick="abrirAba('pagar', this)">
-    <div class="circle">Pg</div>Pagar
-  </div>
-  <div class="action" onclick="abrirAba('receber', this)">
-    <div class="circle">Rc</div>Receber
-  </div>
-  <div class="action" onclick="abrirAba('config', this)">
-    <div class="circle">Cf</div>Config
-  </div>
- </nav>
-
- <!-- ABA INÍCIO -->
- <div id="tab-inicio" class="tab-content active">
-  <div class="panel">
-    <div class="section-title">Bem-vindo</div>
-    <p style="color:#aaa;margin:0 0 16px;font-size:14px">Use os botões acima para navegar entre as funções.</p>
-    
-    <div style="background:#2a1a3a;border-radius:14px;padding:16px;color:#d4b8f0;font-size:14px;line-height:1.5">
-      <b>Transferência de brincadeira</b><br>
-      Simule envios e pagamentos usando dados fictícios.
-    </div>
-  </div>
-
-  <div class="panel" style="margin-top:16px">
-    <div class="section-title">Últimas movimentações</div>
-    <div id="history">
-      <div class="small">Nenhuma movimentação ainda.</div>
-    </div>
-  </div>
- </div>
-
- <!-- ABA PIX -->
- <div id="tab-pix" class="tab-content">
-  <div class="panel">
-    <div class="section-title">Área Pix e Transferir</div>
-    
-    <label>Identificador fictício de quem recebe</label>
-    <input id="recipient" placeholder="Ex.: DEMO-0002">
-
-    <label>Valor da transferência (R$)</label>
-    <input id="amount" type="number" min="0.01" step="0.01" placeholder="Ex.: 25,00">
-
-    <button onclick="transfer()">Simular transferência</button>
-    <div id="msg"></div>
-    <div class="small" style="margin-top:10px">Use códigos DEMO. Nenhum dinheiro real é enviado.</div>
-  </div>
- </div>
-
- <!-- ABA PAGAR -->
- <div id="tab-pagar" class="tab-content">
-  <div class="panel">
-    <div class="section-title">Pagar</div>
-    <div style="color:#c77dff;font-size:14px;margin-bottom:8px">Adiciona o CPF para pagamento</div>
-    
-    <label>CPF (de brincadeira)</label>
-    <input id="payCpf" type="text" placeholder="Ex.: 123.456.789-00" maxlength="14">
-
-    <label>Valor do pagamento (R$)</label>
-    <input id="payAmount" type="number" min="0.01" step="0.01" placeholder="Ex.: 50,00">
-
-    <button onclick="pagar()">Pagar</button>
-    <div id="payMsg"></div>
-    <div class="small" style="margin-top:10px">CPF apenas fictício. Nenhum pagamento real é feito.</div>
-  </div>
- </div>
-
- <!-- ABA RECEBER -->
- <div id="tab-receber" class="tab-content">
-  <div class="panel">
-    <div class="section-title">Receber de brincadeira</div>
-    <p style="color:#aaa;font-size:14px;margin:0 0 16px">
-      Esta é só uma demonstração.
-    </p>
-
-    <div class="small">Seu identificador fictício</div>
-    <div class="cpf-box">
-      <b id="meuId">DEMO-0001</b>
-    </div>
-
-    <div class="small" style="margin-top:20px">Seu CPF fake</div>
-    <div class="cpf-box">
-      <b id="meuCpf">000.000.000-00</b>
-    </div>
-  </div>
- </div>
-
- <!-- ABA CONFIG -->
- <div id="tab-config" class="tab-content">
-  <div class="panel">
-    <div class="section-title">Configurações</div>
-
-    <label>Alterar nome de usuário</label>
-    <input id="editName" type="text" maxlength="30" placeholder="Novo nome">
-    <button onclick="changeName()">Salvar nome</button>
-
-    <label>Alterar foto de perfil</label>
-    <input id="changePhoto" type="file" accept="image/*">
-    <button onclick="changeProfilePhoto()">Atualizar foto</button>
-    <div id="profileMsg"></div>
-  </div>
-
-  <div class="panel" style="margin-top:16px">
-    <div class="section-title">Ajustar saldo</div>
-    <label>Quanto você quer mostrar? (R$)</label>
-    <input id="newBalance" type="number" min="0" step="0.01" placeholder="Ex.: 850,00">
-    <button onclick="setBalance()">Atualizar saldo fictício</button>
-  </div>
-
-  <div class="panel" style="margin-top:16px">
-    <div class="section-title">Conta salva</div>
-    <p style="color:#aaa;font-size:14px;margin:0 0 12px">
-      Sua conta é salva automaticamente neste celular.  
-      Você não perde o saldo nem o histórico ao fechar o app.
-    </p>
-    <button class="light" onclick="resetDemo()">Apagar conta e reiniciar</button>
-  </div>
- </div>
-
- <div class="note">
-  <b>Aviso:</b> este é um aplicativo fictício. Não é ligado a banco real.
-  Todos os saldos e movimentos são apenas de brincadeira.
- </div>
-</main>
-
 <script>
-let balance = 500;
-let transactions = [];
-let username = '';
-let meuCpf = '';
-let photoData = null;
-
-const money = n => Number(n).toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-
-/* ---------- Gerar CPF fake ---------- */
-function gerarCpfFake() {
-  const n = () => Math.floor(Math.random() * 9);
-  return `\( {n()} \){n()}\( {n()}. \){n()}\( {n()} \){n()}.\( {n()} \){n()}\( {n()}- \){n()}${n()}`;
+let current=0; const slides=document.querySelectorAll('.slide'); const bgs=document.querySelectorAll('.bg'); const progress=document.getElementById('progress');
+let narrationOn=true, started=false, startTime=Date.now(), selectedPos="";
+const GROUP_LINK="https://chat.whatsapp.com/J8IeB8h3FKW2XETNdArvgM?s=cl&p=a&iam=2";
+// TEXTO REESCRITO ESTILO NARRADOR NFA - EMOCIONANTE, IGUAL O RADÃO FALA
+const narrations=[
+  "Salve, salve, senhoras e senhores! CROWNS Sports apresenta! Nem todo mundo nasce rei! Alguns... se tornam!",
+  "Free Fire competitivo! Não é só jogo, família! É guerra pela coroa! Ranked! Sala! Campeonato! Quem treina... REINA!",
+  "Disciplina! Raça! Respeito! É aqui onde tudo começa! Ninguém vê o começo! Todo mundo vê a COROA!",
+  "Recrutamento aberto! Quer vestir a coroa?! Clica em quero entrar, escolhe sua posição e vem pro grupo oficial da CROWNS!"
+];
+function getBestVoice(){ const v=speechSynthesis.getVoices(); return v.find(x=>x.lang==='pt-BR' && x.name.toLowerCase().includes('daniel')) || v.find(x=>x.lang==='pt-BR' && x.name.toLowerCase().includes('google')) || v.find(x=>x.lang==='pt-BR') || v.find(x=>x.lang.includes('pt')); }
+function speak(text){
+  document.getElementById('narraText').textContent=text;
+  if(!narrationOn) return;
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang='pt-BR'; u.rate=1.05; u.pitch=0.9; u.volume=1;
+    const v=getBestVoice(); if(v) u.voice=v;
+    speechSynthesis.speak(u);
+  }catch(e){}
 }
-
-/* ---------- Salvar / Carregar conta ---------- */
-function salvarConta() {
-  const data = {
-    username,
-    balance,
-    transactions,
-    meuCpf,
-    photoData
-  };
-  localStorage.setItem('bancoRoxoConta', JSON.stringify(data));
-}
-
-function carregarConta() {
-  const raw = localStorage.getItem('bancoRoxoConta');
-  if (!raw) return false;
-
-  try {
-    const data = JSON.parse(raw);
-    username = data.username || '';
-    balance = data.balance || 500;
-    transactions = data.transactions || [];
-    meuCpf = data.meuCpf || gerarCpfFake();
-    photoData = data.photoData || null;
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-/* ---------- Navegação de abas ---------- */
-function abrirAba(nome, el) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + nome).classList.add('active');
-
-  document.querySelectorAll('.action').forEach(a => a.classList.remove('active'));
-  if (el) el.classList.add('active');
-}
-
-function render() {
-  document.getElementById('balance').textContent = money(balance);
-  document.getElementById('meuCpf').textContent = meuCpf;
-
-  const h = document.getElementById('history');
-  h.innerHTML = transactions.length
-    ? transactions.map(t => `
-      <div class="historyitem">
-        <span>\( {t.desc}<br><small> \){t.date}</small></span>
-        <b style="color:${t.value < 0 ? '#ff6b6b' : '#4ade80'}">
-          \( {t.value < 0 ? '−' : '+'} \){money(Math.abs(t.value))}
-        </b>
-      </div>`).join('')
-    : '<div class="small">Nenhuma movimentação ainda.</div>';
-}
-
-function msg(s) { document.getElementById('msg').textContent = s; }
-function payMsg(s) { document.getElementById('payMsg').textContent = s; }
-
-function confirmProfile() {
-  const name = document.getElementById('userName').value.trim();
-  const value = document.getElementById('initialBalance').value;
-
-  if (!name) { alert('Digite seu nome de usuário.'); return; }
-  if (value === '' || !Number.isFinite(Number(value)) || Number(value) < 0) {
-    alert('Digite um saldo inicial válido.'); return;
-  }
-
-  username = name;
-  balance = Number(value);
-  meuCpf = gerarCpfFake();
-
-  document.getElementById('nameStep').style.display = 'none';
-  document.getElementById('photoStep').style.display = 'block';
-}
-
-function finishProfile() {
-  const file = document.getElementById('profilePhoto').files[0];
-  if (file) showPhoto(file);
-
-  document.getElementById('displayName').textContent = username;
-  document.getElementById('editName').value = username;
-  document.getElementById('welcome').style.display = 'none';
-
-  salvarConta();
-  render();
-}
-
-function showPhoto(file) {
-  if (!file.type.startsWith('image/')) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    photoData = reader.result;
-    document.getElementById('avatar').innerHTML = '<img src="' + photoData + '" alt="Foto">';
-    salvarConta();
-  };
-  reader.readAsDataURL(file);
-}
-
-function changeName() {
-  const name = document.getElementById('editName').value.trim();
-  if (!name) {
-    document.getElementById('profileMsg').textContent = 'Digite um nome válido.';
-    return;
-  }
-  username = name;
-  document.getElementById('displayName').textContent = username;
-  document.getElementById('profileMsg').textContent = 'Nome atualizado!';
-  salvarConta();
-}
-
-function changeProfilePhoto() {
-  const file = document.getElementById('changePhoto').files[0];
-  if (!file) {
-    document.getElementById('profileMsg').textContent = 'Escolha uma foto primeiro.';
-    return;
-  }
-  showPhoto(file);
-  document.getElementById('profileMsg').textContent = 'Foto atualizada!';
-}
-
-function setBalance() {
-  const v = Number(document.getElementById('newBalance').value);
-  if (!Number.isFinite(v) || v < 0) return;
-
-  balance = v;
-  transactions.unshift({
-    desc: 'Saldo fictício ajustado',
-    value: 0,
-    date: new Date().toLocaleString('pt-BR')
-  });
-  document.getElementById('newBalance').value = '';
-  salvarConta();
-  render();
-}
-
-function transfer() {
-  const who = document.getElementById('recipient').value.trim().toUpperCase();
-  const v = Number(document.getElementById('amount').value);
-
-  if (!/^DEMO-\d{4}$/.test(who) || who === 'DEMO-0001') {
-    return msg('Use outro código fictício, como DEMO-0002.');
-  }
-  if (!Number.isFinite(v) || v <= 0) return msg('Digite um valor válido.');
-  if (v > balance) return msg('Saldo fictício insuficiente.');
-
-  balance -= v;
-  transactions.unshift({
-    desc: 'Envio fictício para ' + who,
-    value: -v,
-    date: new Date().toLocaleString('pt-BR')
-  });
-  document.getElementById('amount').value = '';
-  msg('Transferência simulada com sucesso!');
-  salvarConta();
-  render();
-}
-
-function pagar() {
-  const cpf = document.getElementById('payCpf').value.trim();
-  const v = Number(document.getElementById('payAmount').value);
-
-  if (!cpf) {
-    payMsg('Adiciona o CPF para pagamento');
-    return;
-  }
-  if (!Number.isFinite(v) || v <= 0) {
-    payMsg('Digite um valor válido');
-    return;
-  }
-  if (v > balance) {
-    payMsg('Saldo fictício insuficiente');
-    return;
-  }
-
-  balance -= v;
-  transactions.unshift({
-    desc: 'Pagamento fictício para CPF ' + cpf,
-    value: -v,
-    date: new Date().toLocaleString('pt-BR')
-  });
-
-  document.getElementById('payAmount').value = '';
-  payMsg('Pagamento simulado com sucesso!');
-  salvarConta();
-  render();
-}
-
-function resetDemo() {
-  if (!confirm('Tem certeza que deseja apagar a conta e reiniciar?')) return;
-
-  localStorage.removeItem('bancoRoxoConta');
-  location.reload();
-}
-
-/* ---------- Ao abrir o app ---------- */
-window.onload = () => {
-  if (carregarConta()) {
-    // Já tem conta salva → entra direto
-    document.getElementById('welcome').style.display = 'none';
-    document.getElementById('displayName').textContent = username;
-    document.getElementById('editName').value = username;
-
-    if (photoData) {
-      document.getElementById('avatar').innerHTML = '<img src="' + photoData + '" alt="Foto">';
-    }
-
-    render();
-  }
-};
+function show(n){ current=(n+slides.length)%slides.length; slides.forEach((s,i)=>s.classList.toggle('active',i===current)); bgs.forEach((b,i)=>b.classList.toggle('active',i===current)); if(started) speak(narrations[current]); }
+function nextSlide(){ show(current+1); startTime=Date.now(); }
+function prevSlide(){ show(current-1); startTime=Date.now(); }
+function toggleNarration(){ narrationOn=!narrationOn; document.getElementById('btnNarra').textContent=narrationOn?'🎙️ NARRAÇÃO: ON':'🔇 NARRAÇÃO: OFF'; if(!narrationOn) speechSynthesis.cancel(); else speak(narrations[current]); }
+function testVoice(){ narrationOn=true; speak("Salve, salve, senhoras e senhores! Radão na área? Não! Aqui é CROWNS Sports! É a emoção do emulador! Que bala! Bora reinar com a gente?"); }
+function startTrailer(){ document.getElementById('startScreen').classList.add('hidden'); started=true; startTime=Date.now(); show(0); }
+function replay(){ closeJoin(); show(0); startTime=Date.now(); }
+function openJoin(){ document.getElementById('joinPage').classList.add('active'); speak("Você clicou em quero entrar! Agora escreve seu nick, escolhe sua posição e entra no grupo oficial da CROWNS Sports!"); }
+function closeJoin(){ document.getElementById('joinPage').classList.remove('active'); if(started) speak(narrations[current]); }
+function selectPos(btn,pos){ selectedPos=pos; document.querySelectorAll('.pos-btn').forEach(b=>b.classList.remove('selected')); btn.classList.add('selected'); document.getElementById('posEscolhida').textContent="Sua posição: "+pos+" ✅"; speak("Posição escolhida: "+pos+"! Que bala! Agora entra no grupo!"); }
+function goToGroup(){ const nick=document.getElementById('nick').value.trim(); if(!selectedPos){ alert('Escolhe sua posição primeiro 👑'); return; } if(!nick){ alert('Coloca seu nick primeiro 👑'); return; } speak("Boa, "+nick+"! "+selectedPos+" da CROWNS Sports! Te vejo no grupo!"); setTimeout(()=>window.open(GROUP_LINK,'_blank'),800); }
+function copyLink(){ navigator.clipboard.writeText(GROUP_LINK).then(()=>alert('Link copiado! 👑')); }
+document.getElementById('btnStart').addEventListener('click',startTrailer);
+document.getElementById('btnTestVoice').addEventListener('click',testVoice);
+document.getElementById('btnNarra').addEventListener('click',toggleNarration);
+document.getElementById('btnPrev').addEventListener('click',prevSlide);
+document.getElementById('btnNext').addEventListener('click',nextSlide);
+document.getElementById('btnQueroEntrar').addEventListener('click',openJoin);
+document.getElementById('btnReplay').addEventListener('click',replay);
+document.getElementById('btnGoGroup').addEventListener('click',goToGroup);
+document.getElementById('btnCopy').addEventListener('click',copyLink);
+document.getElementById('btnBack').addEventListener('click',closeJoin);
+document.querySelectorAll('.pos-btn').forEach(btn=>btn.addEventListener('click',()=>selectPos(btn,btn.dataset.pos)));
+function loop(){ if(started && !document.getElementById('joinPage').classList.contains('active')){ const e=Date.now()-startTime; progress.style.width=Math.min(100,(e/16000)*100)+'%'; if(e>6000){ show(current+1); startTime=Date.now(); } } requestAnimationFrame(loop); } loop();
 </script>
 </body>
-</html>
+    </html>
